@@ -1,40 +1,31 @@
 import GetEquation from "../functions/GetEquation"
 import { useState, useEffect } from "react"
 
-function Question() { 
+function Question({ isRunning }) { 
     const [equation, setEquation] = useState(() => GetEquation(1, 10))
     const [guess, setGuess] = useState("")
     const [count, setCount] = useState(0)
 
+    const { n1, n2, operator, answer } = equation
+
     useEffect(() => {
         if (guess === "") return 
         if (Number(guess) === answer) {
-            newEquation()
+            setEquation(GetEquation(1, 10))
             setGuess("")
-            setCount(count + 1)
+            setCount(c => c + 1)
         }
-        
-    }, [guess])
-    const { n1, n2, operator, answer } = equation
+    }, [guess, answer])
     
-    function newEquation() {
-        setEquation(GetEquation(1, 10))
-    }
-    function checkAnswer() {
-        if (Number(guess) === answer) {
-            newEquation()
-
-        }
-    }
     return (
-        <div className="main">
+        <div className="question-area">
             <p className="equation">{n1} {operator} {n2} = ?</p>
             <input
-            className="input-box"
-            type="number"
-            value={guess}
-            onChange={e => setGuess(e.target.value)}
-            
+                className="input-box"
+                type="number"
+                value={guess}
+                onChange={e => setGuess(e.target.value)}
+                disabled={!isRunning}
             />
             <p className="counter">Count: {count}</p>
         </div>

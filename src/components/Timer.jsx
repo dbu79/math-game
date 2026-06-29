@@ -1,12 +1,9 @@
-import { useState, useEffect } from "react"
-
-function Timer({ duration }) {
-    const [time, setTime] = useState(duration)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setTime(time - 1)
-        }, 120);
-    }, [time])
-    return <div>{time}</div>
+function Timer({ time }) {
+    return (
+        <div>
+            {time > 0 ? <p>{time}</p> : <p>Time's Up</p>}
+        </div>
+    )
 }
+
+export default Timer
