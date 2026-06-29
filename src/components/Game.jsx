@@ -1,41 +1,47 @@
-import { useEffect, useState } from "react"
-import Question from "./Question"
-import Timer from "./Timer"
+import { use, useEffect, useState } from "react"
+import PlayingScreen from "./PlayScreen"
+import StartScreen from "./StartScreen"
 
 function Game() { 
-    const [time, setTime] = useState(30)
-    const [time2, setTime2] = useState(5)
+    const [time, setTime] = useState(20)
     const [hasStarted, setHasStarted] = useState(false)
+    const [hasEnded, setHasEnded] = useState(false)
     const [round, setRound] = useState(0)
+    const [count, setCount] = useState(0)
+    const [skipped, setSkipped] = useState(0)
+
     const isRunning = hasStarted && time > 0 
 
     useEffect(() => {
         if (!isRunning) return 
         const countdown = setInterval(() => setTime(prev => prev - 1), 1000)
-        return () => clearInterval(countdown)
-    }, [isRunning])
-
-    useEffect(() => {
-        if (!isRunning) return
-        const countdown2 = setInterval(() => setTime2(prev => prev - 1), 1000);
-        return () => clearInterval(countdown2)
+        return () => clearInterval(countdown) 
     }, [isRunning])
     
     function startGame() { 
-        setTime(10)
+        setTime(20)
         setHasStarted(true)
         setRound(r => r + 1)
+        setCount(0)
+        setSkipped(0)
     }
 
     return (
-        <div className="main"> 
-            <Timer time={time}/>
-            <Question key={round} isRunning={isRunning} />
-            <button onClick={startGame}>
-                {hasStarted ? "Restart" : "Start"}
-            </button>
+        <div className="main">
+            {hasStarted ? (
+                <PlayingScreen
+                    time={time}
+                    round={round}
+                    count={count}
+                    skipped={skipped}
+                    isRunning={isRunning}
+                    onCorrect={() => setCount(c => c + 1)}
+                    onSkip={() => setSkipped(s => s + 1)}
+                    onRestart={startGame}/>
+            ) : (
+                <StartScreen onStart={startGame} />
+            )}
         </div>
-
     )
 }
 

@@ -1,10 +1,10 @@
 import GetEquation from "../functions/GetEquation"
 import { useState, useEffect } from "react"
 
-function Question({ isRunning }) { 
+function Question({ isRunning, onCorrect, onSkip }) { 
     const [equation, setEquation] = useState(() => GetEquation(1, 10))
+    const [miniTimer, setMiniTimer] = useState(4)
     const [guess, setGuess] = useState("")
-    const [count, setCount] = useState(0)
 
     const { n1, n2, operator, answer } = equation
 
@@ -13,12 +13,32 @@ function Question({ isRunning }) {
         if (Number(guess) === answer) {
             setEquation(GetEquation(1, 10))
             setGuess("")
-            setCount(c => c + 1)
+            setMiniTimer(4)
+            onCorrect()
         }
     }, [guess, answer])
+
+    useEffect(() => {
+        if (!isRunning) return 
+        const countdown = setInterval(() => setMiniTimer(prev => prev - 1), 1000)
+        return () => clearInterval(countdown)
+    }, [isRunning])
+
+    useEffect(() => {
+        if (isRunning) {
+            if (miniTimer === 0) {
+                setEquation(GetEquation(1, 10))
+                setGuess("")
+                setMiniTimer(4)
+                onSkip()
+            }
+        }
+    }, [miniTimer, isRunning])
+
     
     return (
         <div className="question-area">
+            <p>{miniTimer}</p>
             <p className="equation">{n1} {operator} {n2} = ?</p>
             <input
                 className="input-box"
@@ -27,7 +47,6 @@ function Question({ isRunning }) {
                 onChange={e => setGuess(e.target.value)}
                 disabled={!isRunning}
             />
-            <p className="counter">Count: {count}</p>
         </div>
     )
 }

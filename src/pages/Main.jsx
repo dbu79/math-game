@@ -3,7 +3,7 @@ import GetEquation from "../functions/GetEquation"
 import Game from "../components/Game"
 import Timer from '../components/Timer'
 
-function PlayGame() { 
+function Main() { 
     return (
         <>
             <Game/>
@@ -11,4 +11,4 @@ function PlayGame() {
     )
 }
 
-export default PlayGame
+export default Main
