@@ -1,8 +1,11 @@
+import Settings from "./Settings"
 
-
-function StartScreen({ onStart }) { 
+function StartScreen({ onStart, min, max, onMinChange, onMaxChange }) { 
     return (
-        <button onClick={onStart}>Start Game</button>
+        <div className="start">
+            <Settings min={min} max={max} onMinChange={onMinChange} onMaxChange={onMaxChange}/>
+            <button onClick={onStart}>Start Game</button>
+        </div>
     )
 }
 

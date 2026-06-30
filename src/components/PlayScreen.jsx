@@ -2,7 +2,7 @@ import Question from "./Question";
 import Timer from "./Timer";
 import Stats from "./Stats";
 
-function PlayingScreen({ time, round, count, skipped, onCorrect, onSkip, isRunning, onRestart, }) {
+function PlayingScreen({ time, round, count, skipped, onCorrect, onSkip, isRunning, onRestart, min, max }) {
     return (
         <>
         <Timer time={time}/>
@@ -10,7 +10,9 @@ function PlayingScreen({ time, round, count, skipped, onCorrect, onSkip, isRunni
             key={round}
             isRunning={isRunning}
             onCorrect={onCorrect}
-            onSkip={onSkip}/>
+            onSkip={onSkip}
+            min={min}
+            max={max}/>
         <Stats count={count} skipped={skipped}/>
         <button onClick={onRestart}>Restart</button>
         </>

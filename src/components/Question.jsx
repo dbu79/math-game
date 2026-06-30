@@ -1,8 +1,9 @@
 import GetEquation from "../functions/GetEquation"
+import Settings from "./Settings"
 import { useState, useEffect } from "react"
 
-function Question({ isRunning, onCorrect, onSkip }) { 
-    const [equation, setEquation] = useState(() => GetEquation(1, 10))
+function Question({ isRunning, onCorrect, onSkip, min, max }) { 
+    const [equation, setEquation] = useState(() => GetEquation(Number(min), Number(max)))
     const [miniTimer, setMiniTimer] = useState(4)
     const [guess, setGuess] = useState("")
 
@@ -11,7 +12,7 @@ function Question({ isRunning, onCorrect, onSkip }) {
     useEffect(() => {
         if (guess === "") return 
         if (Number(guess) === answer) {
-            setEquation(GetEquation(1, 10))
+            setEquation(GetEquation(Number(min), Number(max)))
             setGuess("")
             setMiniTimer(4)
             onCorrect()
@@ -38,7 +39,6 @@ function Question({ isRunning, onCorrect, onSkip }) {
     
     return (
         <div className="question-area">
-            <p>{miniTimer}</p>
             <p className="equation">{n1} {operator} {n2} = ?</p>
             <input
                 className="input-box"

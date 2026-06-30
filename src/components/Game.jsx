@@ -10,6 +10,8 @@ function Game() {
     const [round, setRound] = useState(0)
     const [count, setCount] = useState(0)
     const [skipped, setSkipped] = useState(0)
+    const [min, setMin] = useState()
+    const [max, setMax] = useState()
 
     const isRunning = hasStarted && time > 0 
 
@@ -33,7 +35,7 @@ function Game() {
         setHasEnded(false)
     }
     return (
-        <div className="main">
+        <div className={`main${hasStarted ? " card" : ""}`}>
             {hasEnded ? (
                 <EndScreen count={count} skipped={skipped} onRestart={startGame}/>
             ) : hasStarted ? (
@@ -43,11 +45,19 @@ function Game() {
                     count={count}
                     skipped={skipped}
                     isRunning={isRunning}
+                    min={min}
+                    max={max}
                     onCorrect={() => setCount(c => c + 1)}
                     onSkip={() => setSkipped(s => s + 1)}
                     onRestart={startGame}/>
             ) : (
-                <StartScreen onStart={startGame}/>
+                <StartScreen 
+                onStart={startGame}
+                min={min}
+                max={max}
+                onMinChange={setMin}
+                onMaxChange={setMax}
+                />
             )}
         </div>
     )

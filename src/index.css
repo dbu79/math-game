@@ -1,53 +1,240 @@
-:root {
+ :root {
     --text-primary: #171717;
-    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;  
-    background-color: #f4f4f9; 
-    
-	--bg-1: #05060a;
-	--bg-2: #0c1018;
-	--panel: rgba(12, 18, 28, 0.72);
-	--panel-border: rgba(180, 220, 255, 0.12);
-	--text: #edf6ff;
-	--muted: #9fb1c7;
-	--accent: #c9f5ff;
-	--accent-2: #79d7ff;
-	--danger: #ff6d7a;
-	--good: #8fffd0;
-	--shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
+    --text-secondary: #6b6b75;
+    --font-sans: "Figtree";
+    --bg: #f4f4f9;
+    --surface: #ffffff;
+    --border: #e3e3ea;
+    --accent: #4a90e2;
+    --accent-hover: #3a7bc8;
+    --correct: #2f9e63;
+    --incorrect: #e2574a;
+    --radius: 10px;
+    --max-width: 720px;
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2.5rem;
+    --space-5: 4rem;
 }
 
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ---- Navbar ---- */
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01rem;
+    gap: var(--space-3);
+    margin: 1rem 1rem 1rem;
+}
+
+/* ---- Page layout ---- */
+
+.page-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---- Game panel ---- */
 
 .main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: var(--font-sans);
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 var(--space-2);
+    gap: var(--space-2);
 }
+
+.card {
+    padding: var(--space-4);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---- Start screen ---- */
+
+.start {
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.start p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0 0 var(--space-2);
+}
+
+.settings {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+.min-box {
+    width: 6rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    outline: none;
+    appearance: textfield;
+    margin: 0 1rem 1rem;
+    -moz-appearance: textfield;
+}
+
+.min-box:focus {
+    border-color: var(--accent);
+}
+
+.min-box:disabled {
+    opacity: 0.5;
+}
+
+.max-box {
+    width: 6rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    outline: none;
+    appearance: textfield;
+    margin: 0 1rem 1rem;
+    -moz-appearance: textfield;
+}
+
+.max-box:focus {
+    border-color: var(--accent);
+}
+
+.max-box:disabled {
+    opacity: 0.5;
+}
+
+
+/* ---- Timer ---- */
+
+.timer p {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 var(--space-2);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---- Stats ---- */
+
+.stats {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+}
+
+.stats p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.stats .counter { color: var(--correct); }
+.stats .skipped { color: var(--incorrect); }
+
+/* ---- Question ---- */
 
 .main .question-area {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: var(--font-sans);
+    gap: var(--space-2);
 }
 
 .equation {
     font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
 }
 
 .input-box {
     padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    width: 6rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     outline: none;
 }
 
 .input-box:focus {
-    border-color: #4a90e2;
+    border-color: var(--accent);
 }
 
+.input-box:disabled {
+    opacity: 0.5;
+}
 
 .input-box[type="number"] {
-  -moz-appearance: textfield;
-  appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* ---- Buttons ---- */
+
+button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+}
+
+button:hover {
+    background: var(--accent-hover);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* ---- End screen ---- */
+
+.end-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
 }
