@@ -46,6 +46,7 @@ function Question({ isRunning, onCorrect, onSkip }) {
                 value={guess}
                 onChange={e => setGuess(e.target.value)}
                 disabled={!isRunning}
+                autoFocus
             />
         </div>
     )

@@ -1,6 +1,7 @@
 import { use, useEffect, useState } from "react"
 import PlayingScreen from "./PlayScreen"
 import StartScreen from "./StartScreen"
+import EndScreen from "./EndScreen"
 
 function Game() { 
     const [time, setTime] = useState(20)
@@ -18,17 +19,24 @@ function Game() {
         return () => clearInterval(countdown) 
     }, [isRunning])
     
-    function startGame() { 
+    useEffect(() => {
+        if (time === 0) {
+            setHasEnded(true)
+        }
+    }, [time])
+    function startGame() {   
         setTime(20)
         setHasStarted(true)
         setRound(r => r + 1)
         setCount(0)
         setSkipped(0)
+        setHasEnded(false)
     }
-
     return (
         <div className="main">
-            {hasStarted ? (
+            {hasEnded ? (
+                <EndScreen count={count} skipped={skipped} onRestart={startGame}/>
+            ) : hasStarted ? (
                 <PlayingScreen
                     time={time}
                     round={round}
@@ -39,10 +47,11 @@ function Game() {
                     onSkip={() => setSkipped(s => s + 1)}
                     onRestart={startGame}/>
             ) : (
-                <StartScreen onStart={startGame} />
+                <StartScreen onStart={startGame}/>
             )}
         </div>
     )
 }
 
 export default Game
+
