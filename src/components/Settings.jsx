@@ -1,22 +1,20 @@
-import { useState, useEffect } from "react"
-
-function Settings( { min, max, onMinChange, onMaxChange }) { 
+function Settings( { min, max, onMinChange, onMaxChange }) {
     return (
         <div className="settings">
             <p>Equation range:</p>
             <input 
                 className="min-box"
                 type="number"
-                value={min}
-                onChange={e => setMin(e.target.value === "" ? "" : e.target.value)}
+                value={min ?? ""}
+                onChange={e => onMinChange(e.target.value === "" ? "" : Number(e.target.value))}
             />
             <p>to</p>
             <input
                 className="max-box"
                 type="number"
-                value={max}
-                onChange={e => setMax(e.target.value === "" ? "" : e.target.value)}
-            ></input>
+                value={max ?? ""}
+                onChange={e => onMaxChange(e.target.value === "" ? "" : Number(e.target.value))}
+            />
         </div>
     )
 }

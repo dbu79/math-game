@@ -10,8 +10,8 @@ function Game() {
     const [round, setRound] = useState(0)
     const [count, setCount] = useState(0)
     const [skipped, setSkipped] = useState(0)
-    const [min, setMin] = useState()
-    const [max, setMax] = useState()
+    const [min, setMin] = useState(1)
+    const [max, setMax] = useState(10)
 
     const isRunning = hasStarted && time > 0 
 

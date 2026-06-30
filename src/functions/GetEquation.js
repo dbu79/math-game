@@ -8,15 +8,9 @@ function GetEquation(min, max) {
 
     if (operator === "/") {
         n2 = randInt()
+        if (n2 === 0) n2 = 1 
         const quotient = randInt()
-
         n1 = n2 * quotient
-
-        while (n1 < min || n1 > max) { 
-            n2 = randInt()
-            const q = randInt()
-            n1 = n2 * q 
-        }
     } else {
         n1 = randInt()
         n2 = randInt()

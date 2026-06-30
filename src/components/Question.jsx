@@ -28,13 +28,13 @@ function Question({ isRunning, onCorrect, onSkip, min, max }) {
     useEffect(() => {
         if (isRunning) {
             if (miniTimer === 0) {
-                setEquation(GetEquation(1, 10))
+                setEquation(GetEquation(Number(min), Number(max)))
                 setGuess("")
                 setMiniTimer(4)
                 onSkip()
             }
         }
-    }, [miniTimer, isRunning])
+    }, [miniTimer, isRunning, min, max])
 
     
     return (
