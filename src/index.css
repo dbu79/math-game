@@ -52,6 +52,11 @@ a {
     margin: 1rem 1rem 1rem;
 }
 
+.navbar a {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
 /* ---- Page layout ---- */
 
 .page-content {
@@ -112,47 +117,52 @@ a {
     gap: 1.5rem;
     width: 150%;
     padding: 1rem;
-    transform: translateY(-50px); /* adjust -8px..-20px as needed */
-
+    transform: translateY(-8px); 
+    width: 95%; 
 }
 
 .settings-box {
-        flex: 1;                 
-        background: var(--surface);
-        border-radius: 10px;
-        padding: 1rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
+    flex: 1;                 
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
 }
-
-
 
 .range-inputs {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    accent-color: var(--accent);
 }
 
 .min-box {
-    width: 2rem;
+    width: 1.5rem;
     text-align: center;
     appearance: textfield;
     -moz-appearance: textfield;
     padding: 0.5rem 0.5rem 0.5rem;
     border-radius: 10px;
+    border: 1px solid var(--border);
     margin-left: 0.5rem;
+    font-family: var(--font-sans);
+
 }
 
 .max-box {
-    width: 2rem;
+    width: 1.5rem;
     text-align: center;
     appearance: textfield;
     -moz-appearance: textfield;
     padding: 0.5rem 0.5rem 0.5rem;
     border-radius: 10px;
+    border: 1px solid var(--border);
+    font-family: var(--font-sans);
 }
 
 /* ---- Timer ---- */
@@ -251,4 +261,8 @@ button:active {
     flex-direction: column;
     align-items: center;
     gap: var(--space-2);
+}
+
+.end-screen .stats {
+    font-size: 2rem;
 }

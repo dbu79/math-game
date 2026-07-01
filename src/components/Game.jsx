@@ -4,7 +4,7 @@ import StartScreen from "./StartScreen"
 import EndScreen from "./EndScreen"
 
 function Game() { 
-    const [time, setTime] = useState(20)
+    const [time, setTime] = useState(10)
     const [hasStarted, setHasStarted] = useState(false)
     const [hasEnded, setHasEnded] = useState(false)
     const [round, setRound] = useState(0)
@@ -26,21 +26,42 @@ function Game() {
             setHasEnded(true)
         }
     }, [time])
+
+    function onRestart() {
+        setHasStarted(false)
+        setHasEnded(false)
+    }
+
     function startGame() {   
-        setTime(20)
+        setTime(10)
         setHasStarted(true)
         setRound(r => r + 1)
         setCount(0)
         setSkipped(0)
         setHasEnded(false)
     }
+
+    useEffect(() => {
+        if (!isRunning) return
+
+        function handleKeyDown(e) {
+            if (e.key === "Tab") {
+                e.preventDefault()
+                startGame()
+            }
+        }
+            window.addEventListener("keydown", handleKeyDown)
+            return () => window.removeEventListener("keydown", handleKeyDown)
+    }, [isRunning])
+
+
     return (
         <div className={`main${hasEnded ? " end-screen" : hasStarted ? " card" : ""}`}>
             {hasEnded ? (
                 <EndScreen 
                 count={count}
                 skipped={skipped} 
-                onRestart={startGame}
+                onRestart={onRestart}
                 min={min}
                 max={max}
                 onMinChange={setMin}
