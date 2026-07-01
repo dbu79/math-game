@@ -35,9 +35,17 @@ function Game() {
         setHasEnded(false)
     }
     return (
-        <div className={`main${hasStarted ? " card" : ""}`}>
+        <div className={`main${hasEnded ? " end-screen" : hasStarted ? " card" : ""}`}>
             {hasEnded ? (
-                <EndScreen count={count} skipped={skipped} onRestart={startGame}/>
+                <EndScreen 
+                count={count}
+                skipped={skipped} 
+                onRestart={startGame}
+                min={min}
+                max={max}
+                onMinChange={setMin}
+                onMaxChange={setMax}
+                />
             ) : hasStarted ? (
                 <PlayingScreen
                     time={time}

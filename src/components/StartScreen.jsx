@@ -4,7 +4,7 @@ function StartScreen({ onStart, min, max, onMinChange, onMaxChange }) {
     return (
         <div className="start">
             <Settings min={min} max={max} onMinChange={onMinChange} onMaxChange={onMaxChange}/>
-            <button onClick={onStart}>Start Game</button>
+            <button className="start-button" onClick={onStart}>Start Game</button>
         </div>
     )
 }

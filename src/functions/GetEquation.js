@@ -1,6 +1,6 @@
-function GetEquation(min, max) {
-    const sign = ["+", "-", "*", "/"]
-    const operator = sign[Math.floor(Math.random() * sign.length)]
+function GetEquation(min, max, operators = ["*", "-", "+", "/"]) {
+
+    const operator = operators[Math.floor(Math.random() * operators.length)]
 
     const randInt = () => Math.floor(Math.random() * (max - min + 1)) + min
 
@@ -23,7 +23,6 @@ function GetEquation(min, max) {
         "/": (a, b) => a / b,
     }
 
-    const answer = operations[operator](n1, n2)
-    return {n1, n2, operator, answer}
+    return {n1, n2, operator, answer: operations[operator](n1, n2)}
 }
 export default GetEquation
