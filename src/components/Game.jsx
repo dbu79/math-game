@@ -2,16 +2,20 @@ import { use, useEffect, useState } from "react"
 import PlayingScreen from "./PlayScreen"
 import StartScreen from "./StartScreen"
 import EndScreen from "./EndScreen"
+import Settings from "./Settings"
 
 function Game() { 
-    const [time, setTime] = useState(10)
+    const [time, setTime] = useState(30)
+    const [selectedTime, setSelectedTime] = useState(30)
     const [hasStarted, setHasStarted] = useState(false)
     const [hasEnded, setHasEnded] = useState(false)
     const [round, setRound] = useState(0)
     const [count, setCount] = useState(0)
     const [skipped, setSkipped] = useState(0)
-    const [min, setMin] = useState(1)
-    const [max, setMax] = useState(10)
+    const [minAdd, setMinAdd] = useState(1)
+    const [maxAdd, setMaxAdd] = useState(10)
+    const [minMult, setMinMult] = useState(1)
+    const [maxMult, setMaxMult] = useState(10)
 
     const isRunning = hasStarted && time > 0 
 
@@ -33,7 +37,7 @@ function Game() {
     }
 
     function startGame() {   
-        setTime(10)
+        setTime(selectedTime)
         setHasStarted(true)
         setRound(r => r + 1)
         setCount(0)
@@ -62,10 +66,6 @@ function Game() {
                 count={count}
                 skipped={skipped} 
                 onRestart={onRestart}
-                min={min}
-                max={max}
-                onMinChange={setMin}
-                onMaxChange={setMax}
                 />
             ) : hasStarted ? (
                 <PlayingScreen
@@ -74,18 +74,26 @@ function Game() {
                     count={count}
                     skipped={skipped}
                     isRunning={isRunning}
-                    min={min}
-                    max={max}
+                    minAdd={minAdd}
+                    maxAdd={maxAdd}
+                    minMult={minMult}
+                    maxMult={maxMult}
                     onCorrect={() => setCount(c => c + 1)}
                     onSkip={() => setSkipped(s => s + 1)}
                     onRestart={startGame}/>
             ) : (
                 <StartScreen 
                 onStart={startGame}
-                min={min}
-                max={max}
-                onMinChange={setMin}
-                onMaxChange={setMax}
+                minAdd={minAdd}
+                maxAdd={maxAdd}
+                onMinAddChange={setMinAdd}
+                onMaxAddChange={setMaxAdd}
+                minMult={minMult}
+                maxMult={maxMult}
+                onMinMultChange={setMinMult}
+                onMaxMultChange={setMaxMult}
+                selectedTime={selectedTime}
+                setSelectedTime={setSelectedTime}
                 />
             )}
         </div>

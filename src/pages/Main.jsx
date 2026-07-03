@@ -5,6 +5,9 @@ function Main() {
         <div className="page-content">
             <Game/>
         </div>
+        // <>
+        //     <Game/>
+        // </>
     )
 }
 

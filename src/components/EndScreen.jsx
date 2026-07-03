@@ -1,11 +1,11 @@
 import Stats from "./Stats"
 import Settings from "./Settings"
 
-function EndScreen({ count, skipped, onRestart, min, max, onMinChange, onMaxChange }) {
+function EndScreen({ count, skipped, onRestart }) {
     return (
         <>
-            <div className="end-screen">
-                <Stats count={count} skipped={skipped}/>
+            <Stats count={count} skipped={skipped}/>
+            <div className="play-again-button">
                 <button onClick={onRestart}>Play Again?</button>
             </div>
         </>

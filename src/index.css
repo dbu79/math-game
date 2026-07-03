@@ -1,22 +1,17 @@
  :root {
-    /* --text-primary: #171717; */
     --text-primary: #d1d0c5;
-    /* --text-secondary: #6b6b75; */
     --text-secondary: #646669;
     --font-sans: "JetBrains Mono";
-    /* --bg: #f4f4f9; */
     --bg: #323437;
-    /* --surface: #ffffff; */
     --surface: #2c2e31;
     --border: #e3e3ea;
-    /* --accent: #4a90e2; */
     --accent: #e2b714;
-    --accent-hover: #3a7bc8;
+    --accent-hover: #e2b714cc;
     --correct: #2f9e63;
     /* --incorrect: #e2574a; */
     --incorrect: #ca4754;
     --radius: 10px;
-    --max-width: 720px;
+    --max-width: 1080px;
     --space-1: 0.5rem;
     --space-2: 1rem;
     --space-3: 1.5rem;
@@ -63,6 +58,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 /* ---- Game panel ---- */
@@ -76,16 +73,6 @@ a {
     max-width: var(--max-width);
     margin: 0 var(--space-2);
     gap: var(--space-2);
-}
-
-.card {
-    padding: var(--space-4);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* ---- Start screen ---- */
@@ -114,17 +101,17 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    gap: 1.5rem;
-    width: 150%;
-    padding: 1rem;
+    gap: var(--space-1);
+    padding: 5rem 1rem 1rem;
     transform: translateY(-8px); 
-    width: 95%; 
+    width: 100%; 
+
 }
 
 .settings-box {
-    flex: 1;                 
+    flex: 1.5;                 
     background: var(--surface);
-    border-radius: 10px;
+    border-radius: var(--radius);
     padding: 1rem;
     display: flex;
     flex-direction: row;
@@ -139,6 +126,7 @@ a {
     align-items: center;
     gap: 0.5rem;
     accent-color: var(--accent);
+    
 }
 
 .min-box {
@@ -147,11 +135,11 @@ a {
     appearance: textfield;
     -moz-appearance: textfield;
     padding: 0.5rem 0.5rem 0.5rem;
-    border-radius: 10px;
+    border-radius: var(--radius);
     border: 1px solid var(--border);
     margin-left: 0.5rem;
     font-family: var(--font-sans);
-
+    background: #d1d0c5;
 }
 
 .max-box {
@@ -160,10 +148,89 @@ a {
     appearance: textfield;
     -moz-appearance: textfield;
     padding: 0.5rem 0.5rem 0.5rem;
-    border-radius: 10px;
+    border-radius: var(--radius);
     border: 1px solid var(--border);
     font-family: var(--font-sans);
+    background: #d1d0c5;
+
 }
+
+/* ---- Operator Checkboxes ---- */
+
+.operator-settings {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: var(--surface);
+    padding: 1rem;
+    border-radius: var(--radius);
+
+}
+
+.operator-toggle {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.operator-label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s;
+}
+
+.operator-toggle:checked + .operator-label {
+    color: var(--accent);
+}
+
+.operator-toggle:hover {
+    background: var(--accent-hover); 
+}
+
+/* ---- Time Toggle ---- */
+
+.time-settings {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: var(--surface);
+    padding: 1rem;
+    border-radius: var(--radius);
+
+}
+
+.time-toggle {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.time-label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s;
+}
+
+.time-toggle:checked + .time-label {
+    color: var(--accent);
+}
+
 
 /* ---- Timer ---- */
 
@@ -178,19 +245,23 @@ a {
 
 .stats {
     display: flex;
-    gap: var(--space-3);
-    margin-bottom: var(--space-2);
+    align-items: center;
+    padding: var(--space-2);
+    background: var(--surface);
+    border-radius: var(--radius);
+    gap: var(--space-4);
+    margin: var(--space-3);
 }
 
 .stats p {
     margin: 0;
-    font-size: 0.8rem;
+    font-size: 1.5rem;
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }
 
-.stats .counter { color: var(--correct); }
+.stats .count { color: var(--correct); }
 .stats .skipped { color: var(--incorrect); }
 
 /* ---- Question ---- */
@@ -263,6 +334,3 @@ button:active {
     gap: var(--space-2);
 }
 
-.end-screen .stats {
-    font-size: 2rem;
-}
