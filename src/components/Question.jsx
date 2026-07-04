@@ -2,8 +2,8 @@ import GetEquation from "../functions/GetEquation"
 import Settings from "./Settings"
 import { useState, useEffect } from "react"
 
-function Question({ isRunning, onCorrect, onSkip, minAdd, maxAdd, minMult, maxMult }) { 
-    const [equation, setEquation] = useState(() => GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult)))
+function Question({ isRunning, onCorrect, onSkip, minAdd, maxAdd, minMult, maxMult, operators }) { 
+    const [equation, setEquation] = useState(() => GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult), operators))
     const [miniTimer, setMiniTimer] = useState(4)
     const [guess, setGuess] = useState("")
 
@@ -12,7 +12,7 @@ function Question({ isRunning, onCorrect, onSkip, minAdd, maxAdd, minMult, maxMu
     useEffect(() => {
         if (guess === "") return 
         if (Number(guess) === answer) {
-            setEquation(GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult)))
+            setEquation(GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult), operators))
             setGuess("")
             setMiniTimer(4)
             onCorrect()
@@ -28,7 +28,7 @@ function Question({ isRunning, onCorrect, onSkip, minAdd, maxAdd, minMult, maxMu
     useEffect(() => {
         if (isRunning) {
             if (miniTimer === 0) {
-                setEquation(GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult)))
+                setEquation(GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult), operators))
                 setGuess("")
                 setMiniTimer(4)
                 onSkip()

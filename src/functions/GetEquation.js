@@ -1,4 +1,4 @@
-function GetEquation(minAdd, maxAdd, minMult, maxMult, operators = ["+", "-", "*", "/"]) {
+function GetEquation(minAdd, maxAdd, minMult, maxMult, operators = []) {
 
     const operator = operators[Math.floor(Math.random() * operators.length)]
 
@@ -21,6 +21,8 @@ function GetEquation(minAdd, maxAdd, minMult, maxMult, operators = ["+", "-", "*
         n1 = randInt()
         n2 = randInt()
     }
+
+    if (operators.length === 0) operators = ["+", "-", "*", "/"]
 
     const operations = {
         "+": (a, b) => a + b, 

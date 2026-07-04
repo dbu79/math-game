@@ -1,4 +1,12 @@
-function Settings({ minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, maxMult, onMinMultChange, onMaxMultChange, selectedTime, setSelectedTime }) {
+function Settings({ minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, maxMult, onMinMultChange, onMaxMultChange, selectedTime, setSelectedTime, operators, onOperatorsChange }) {
+    function toggleOperators(op) {
+        if (operators.includes(op)) {
+            onOperatorsChange(operators.filter(o => o != op))
+        } else {
+            onOperatorsChange([...operators, op])
+        }   
+    }
+    
     return (
         <section className="settings-bar">
             <div className="settings-box add-settings">
@@ -38,13 +46,34 @@ function Settings({ minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, max
                 </div>
             </div>
             <div className="operator-settings">
-                <input className="operator-toggle" type="checkbox" id="toggle-add" />
+                <input 
+                className="operator-toggle" 
+                type="checkbox" 
+                id="toggle-add"
+                checked={operators.includes("+")}
+                onChange={() => toggleOperators("+")}/>
                 <label className="operator-label" htmlFor="toggle-add">+</label>
-                <input className="operator-toggle" type="checkbox" id="toggle-subtract" />
+                <input 
+                className="operator-toggle" 
+                type="checkbox" 
+                id="toggle-subtract"
+                checked={operators.includes("-")}
+                onChange={() => toggleOperators("-")} />
                 <label className="operator-label" htmlFor="toggle-subtract">-</label>
-                <input className="operator-toggle" type="checkbox" id="toggle-multiply" />
+                <input 
+                className="operator-toggle" 
+                type="checkbox" 
+                id="toggle-multiply"
+                checked={operators.includes("*")}
+                onChange={() => toggleOperators("*")}/>
                 <label className="operator-label" htmlFor="toggle-multiply">×</label>
-                <input className="operator-toggle" type="checkbox" id="toggle-divide" />
+                <input 
+                className="operator-toggle" 
+                type="checkbox" 
+                id="toggle-divide" 
+                checked={operators.includes("/")}
+                onChange={() => toggleOperators("/")}
+                />
                 <label className="operator-label" htmlFor="toggle-divide">÷</label>
             </div>
             <div className="time-settings">

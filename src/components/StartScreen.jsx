@@ -1,6 +1,6 @@
 import Settings from "./Settings"
 
-function StartScreen({ onStart, minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, maxMult, onMinMultChange, onMaxMultChange, selectedTime, setSelectedTime }) { 
+function StartScreen({ onStart, minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, maxMult, onMinMultChange, onMaxMultChange, operators, onOperatorsChange, selectedTime, setSelectedTime }) { 
     return (
         <>
         <Settings 
@@ -9,6 +9,7 @@ function StartScreen({ onStart, minAdd, maxAdd, onMinAddChange, onMaxAddChange, 
         minMult={minMult} maxMult={maxMult}
         onMinMultChange={onMinMultChange} onMaxMultChange={onMaxMultChange}
         selectedTime={selectedTime} setSelectedTime={setSelectedTime} 
+        operators={operators} onOperatorsChange={onOperatorsChange}
         />
         <div className="start">
             <button className="start-button" onClick={onStart}>Start Game</button>

@@ -16,6 +16,7 @@ function Game() {
     const [maxAdd, setMaxAdd] = useState(10)
     const [minMult, setMinMult] = useState(1)
     const [maxMult, setMaxMult] = useState(10)
+    const [operators, setOperators] = useState(["+", "-", "*", "/"])
 
     const isRunning = hasStarted && time > 0 
 
@@ -78,6 +79,7 @@ function Game() {
                     maxAdd={maxAdd}
                     minMult={minMult}
                     maxMult={maxMult}
+                    operators={operators}
                     onCorrect={() => setCount(c => c + 1)}
                     onSkip={() => setSkipped(s => s + 1)}
                     onRestart={startGame}/>
@@ -92,6 +94,8 @@ function Game() {
                 maxMult={maxMult}
                 onMinMultChange={setMinMult}
                 onMaxMultChange={setMaxMult}
+                operators={operators}
+                onOperatorsChange={setOperators}
                 selectedTime={selectedTime}
                 setSelectedTime={setSelectedTime}
                 />
