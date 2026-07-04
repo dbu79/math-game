@@ -17,6 +17,7 @@ function Game() {
     const [minMult, setMinMult] = useState(1)
     const [maxMult, setMaxMult] = useState(10)
     const [operators, setOperators] = useState(["+", "-", "*", "/"])
+    const [infMode, setInfMode] = useState(false)
 
     const isRunning = hasStarted && time > 0 
 
@@ -32,6 +33,12 @@ function Game() {
         }
     }, [time])
 
+    useEffect(() => {
+        if (selectedTime === Infinity) {
+            setInfMode(true)
+        }
+    }, [selectedTime])
+    
     function onRestart() {
         setHasStarted(false)
         setHasEnded(false)
@@ -82,7 +89,8 @@ function Game() {
                     operators={operators}
                     onCorrect={() => setCount(c => c + 1)}
                     onSkip={() => setSkipped(s => s + 1)}
-                    onRestart={startGame}/>
+                    onRestart={startGame}
+                    infMode={infMode}/>
             ) : (
                 <StartScreen 
                 onStart={startGame}

@@ -8,7 +8,7 @@
     --border: #e3e3ea;
     --accent: #5ec4ff;
     --accent-hover: #5ec4ffcc;
-    
+
     --correct: #2f9e63;
     --incorrect: #ca4754;
     --radius: 10px;
@@ -303,6 +303,9 @@ a {
     appearance: textfield;
 }
 
+.restart-button {
+    margin-top: -0.5rem;
+}
 /* ---- Buttons ---- */
 
 button {
@@ -332,5 +335,11 @@ button:active {
     flex-direction: column;
     align-items: center;
     gap: var(--space-2);
+    margin-top: var(--space-5);
+
 }
 
+.play-again-button {
+    margin-top: 2.25rem;
+    font-family: var(--font-sans);
+}

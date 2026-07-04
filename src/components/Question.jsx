@@ -2,12 +2,18 @@ import GetEquation from "../functions/GetEquation"
 import Settings from "./Settings"
 import { useState, useEffect } from "react"
 
-function Question({ isRunning, onCorrect, onSkip, minAdd, maxAdd, minMult, maxMult, operators }) { 
+function Question({ isRunning, onCorrect, onSkip, minAdd, maxAdd, minMult, maxMult, operators, infMode }) { 
     const [equation, setEquation] = useState(() => GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult), operators))
     const [miniTimer, setMiniTimer] = useState(4)
     const [guess, setGuess] = useState("")
 
     const { n1, n2, operator, answer } = equation
+
+    useEffect(() => {
+        if (infMode) {
+            setMiniTimer(Infinity)
+        }
+    }, [infMode])
 
     useEffect(() => {
         if (guess === "") return 

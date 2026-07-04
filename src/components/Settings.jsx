@@ -125,6 +125,16 @@ function Settings({ minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, max
                 onChange={() => setSelectedTime(120)} 
                 />
                 <label className="time-label" htmlFor="toggle-120">120</label>
+                <input 
+                className="time-toggle" 
+                type="radio" 
+                id="toggle-inf" 
+                name="time"
+                value={Infinity}
+                checked={selectedTime === Infinity}
+                onChange={() => setSelectedTime(Infinity)} 
+                />
+                <label className="time-label" htmlFor="toggle-inf">∞</label>
             </div>
         </section>
     )
