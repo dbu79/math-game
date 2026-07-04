@@ -2,7 +2,6 @@ import { use, useEffect, useState } from "react"
 import PlayingScreen from "./PlayScreen"
 import StartScreen from "./StartScreen"
 import EndScreen from "./EndScreen"
-import Settings from "./Settings"
 
 function Game() { 
     const [time, setTime] = useState(30)
@@ -18,6 +17,7 @@ function Game() {
     const [maxMult, setMaxMult] = useState(10)
     const [operators, setOperators] = useState(["+", "-", "*", "/"])
     const [infMode, setInfMode] = useState(false)
+    const [equationLog, setEquationLog] = useState([])
 
     const isRunning = hasStarted && time > 0 
 
@@ -50,7 +50,16 @@ function Game() {
         setRound(r => r + 1)
         setCount(0)
         setSkipped(0)
+        setEquationLog([])
         setHasEnded(false)
+    }
+
+    function logSkipped(equation) {
+        setEquationLog(prev => [...prev, {...equation, result: "skipped"}])
+    }
+
+    function logCorrect(equation) {
+        setEquationLog(prev => [...prev, {...equation, result: "correct"}])
     }
 
     useEffect(() => {
@@ -74,6 +83,7 @@ function Game() {
                 count={count}
                 skipped={skipped} 
                 onRestart={onRestart}
+                equationLog={equationLog}
                 />
             ) : hasStarted ? (
                 <PlayingScreen
@@ -89,6 +99,8 @@ function Game() {
                     operators={operators}
                     onCorrect={() => setCount(c => c + 1)}
                     onSkip={() => setSkipped(s => s + 1)}
+                    onLogCorrect={logCorrect}
+                    onLogSkipped={logSkipped}
                     onRestart={startGame}
                     infMode={infMode}/>
             ) : (
