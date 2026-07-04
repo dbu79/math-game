@@ -20,7 +20,7 @@ function Question({ isRunning, onCorrect, onSkip, minAdd, maxAdd, minMult, maxMu
         if (Number(guess) === answer) {
             setEquation(GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult), operators))
             setGuess("")
-            setMiniTimer(4)
+            infMode ? setMiniTimer(Infinity) : setMiniTimer(4)
             onCorrect()
         }
     }, [guess, answer])
@@ -36,11 +36,11 @@ function Question({ isRunning, onCorrect, onSkip, minAdd, maxAdd, minMult, maxMu
             if (miniTimer === 0) {
                 setEquation(GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult), operators))
                 setGuess("")
-                setMiniTimer(4)
+                infMode ? setMiniTimer(Infinity) : setMiniTimer(4)
                 onSkip()
             }
         }
-    }, [miniTimer, isRunning, minAdd, maxAdd, minMult, maxMult])
+    }, [miniTimer, isRunning, minAdd, maxAdd, minMult, maxMult, infMode])
 
     
     return (
