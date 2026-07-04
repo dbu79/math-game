@@ -1,6 +1,7 @@
 function Settings({ minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, maxMult, onMinMultChange, onMaxMultChange, selectedTime, setSelectedTime, operators, onOperatorsChange }) {
     function toggleOperators(op) {
         if (operators.includes(op)) {
+            if (operators.length === 1) return
             onOperatorsChange(operators.filter(o => o != op))
         } else {
             onOperatorsChange([...operators, op])
@@ -51,21 +52,27 @@ function Settings({ minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, max
                 type="checkbox" 
                 id="toggle-add"
                 checked={operators.includes("+")}
-                onChange={() => toggleOperators("+")}/>
+                onChange={() => toggleOperators("+")}
+                disabled={operators.length === 1 && operators.includes("+")}  
+                />
                 <label className="operator-label" htmlFor="toggle-add">+</label>
                 <input 
                 className="operator-toggle" 
                 type="checkbox" 
                 id="toggle-subtract"
                 checked={operators.includes("-")}
-                onChange={() => toggleOperators("-")} />
+                onChange={() => toggleOperators("-")} 
+                disabled={operators.length === 1 && operators.includes("-")}  
+                />
                 <label className="operator-label" htmlFor="toggle-subtract">-</label>
                 <input 
                 className="operator-toggle" 
                 type="checkbox" 
                 id="toggle-multiply"
                 checked={operators.includes("*")}
-                onChange={() => toggleOperators("*")}/>
+                onChange={() => toggleOperators("*")}
+                disabled={operators.length === 1 && operators.includes("*")}  
+                />
                 <label className="operator-label" htmlFor="toggle-multiply">×</label>
                 <input 
                 className="operator-toggle" 
@@ -73,6 +80,7 @@ function Settings({ minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, max
                 id="toggle-divide" 
                 checked={operators.includes("/")}
                 onChange={() => toggleOperators("/")}
+                disabled={operators.length === 1 && operators.includes("/")}  
                 />
                 <label className="operator-label" htmlFor="toggle-divide">÷</label>
             </div>
