@@ -1,8 +1,18 @@
 import GetEquation from "../functions/GetEquation"
 import { useState, useEffect } from "react"
 
-function Question({ isRunning, onCorrect, onSkip, minAdd, maxAdd, minMult, maxMult, operators, infMode, onLogCorrect, onLogSkipped }) { 
-    const [equation, setEquation] = useState(() => GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult), operators))
+function Question({ isRunning, onCorrect, onSkip, minAdd1, maxAdd1, minMul1, maxMul1, minAdd2, maxAdd2, minMul2, maxMul2, operators, infMode, onLogCorrect, onLogSkipped }) { 
+    const [equation, setEquation] = useState(() => GetEquation({
+    minAdd1: Number(minAdd1),
+    maxAdd1: Number(maxAdd1),
+    minMul1: Number(minMul1),
+    maxMul1: Number(maxMul1),
+    minAdd2: Number(minAdd2),
+    maxAdd2: Number(maxAdd2),
+    minMul2: Number(minMul2),
+    maxMul2: Number(maxMul2),
+    operators
+}))
     const [miniTimer, setMiniTimer] = useState(4)
     const [guess, setGuess] = useState("")
 
@@ -18,7 +28,17 @@ function Question({ isRunning, onCorrect, onSkip, minAdd, maxAdd, minMult, maxMu
         if (guess === "") return 
         if (Number(guess) === answer) {
             onLogCorrect(equation)
-            setEquation(GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult), operators))
+            setEquation(GetEquation({
+                minAdd1: Number(minAdd1),
+                maxAdd1: Number(maxAdd1),
+                minMul1: Number(minMul1),
+                maxMul1: Number(maxMul1),
+                minAdd2: Number(minAdd2),
+                maxAdd2: Number(maxAdd2),
+                minMul2: Number(minMul2),
+                maxMul2: Number(maxMul2),
+                operators
+            }))
             setGuess("")
             infMode ? setMiniTimer(Infinity) : setMiniTimer(4)
             onCorrect()
@@ -35,13 +55,23 @@ function Question({ isRunning, onCorrect, onSkip, minAdd, maxAdd, minMult, maxMu
         if (isRunning) {
             if (miniTimer === 0) {
                 onLogSkipped(equation)
-                setEquation(GetEquation(Number(minAdd), Number(maxAdd), Number(minMult), Number(maxMult), operators))
+                setEquation(GetEquation({
+                    minAdd1: Number(minAdd1),
+                    maxAdd1: Number(maxAdd1),
+                    minMul1: Number(minMul1),
+                    maxMul1: Number(maxMul1),
+                    minAdd2: Number(minAdd2),
+                    maxAdd2: Number(maxAdd2),
+                    minMul2: Number(minMul2),
+                    maxMul2: Number(maxMul2),
+                    operators
+                }))
                 setGuess("")
                 infMode ? setMiniTimer(Infinity) : setMiniTimer(4)
                 onSkip()
             }
         }
-    }, [miniTimer, isRunning, minAdd, maxAdd, minMult, maxMult, infMode])
+    }, [miniTimer, isRunning, minAdd1, maxAdd1, minMul1, maxMul1, minAdd2, maxAdd2, minMul2, maxMul2, infMode])
 
     
     return (

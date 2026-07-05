@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 
 function AccuracyChart( { equationLog }) {
     let correctCount = 0 
@@ -30,7 +30,7 @@ function AccuracyChart( { equationLog }) {
                     dataKey="question" 
                     label={{
                         value: "Question", 
-                        position: "insideLeft", 
+                        position: "insideBottomLeft", 
                         offset: -5}}
                     tick={{ fill: "#646669"}}
                     />

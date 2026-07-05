@@ -1,4 +1,4 @@
-function Settings({ minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, maxMult, onMinMultChange, onMaxMultChange, selectedTime, setSelectedTime, operators, onOperatorsChange }) {
+function Settings({ minAdd1, maxAdd1, onMinAdd1Change, onMaxAdd1Change, minMul1, maxMul1, onMinMul1Change, onMaxMul1Change, minAdd2, maxAdd2, onMinAdd2Change, onMaxAdd2Change, minMul2, maxMul2, onMinMul2Change, onMaxMul2Change, selectedTime, setSelectedTime, operators, onOperatorsChange }) {
     function toggleOperators(op) {
         if (operators.includes(op)) {
             if (operators.length === 1) return
@@ -16,15 +16,29 @@ function Settings({ minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, max
                     <input
                         className="min-box"
                         type="number"   
-                        value={minAdd ?? ""}
-                        onChange={e => onMinAddChange(e.target.value === "" ? "" : Number(e.target.value))}
+                        value={minAdd1 ?? ""}
+                        onChange={e => onMinAdd1Change(e.target.value === "" ? "" : Number(e.target.value))}
                         />
                     <span className="range-seperator">to</span>
                     <input
                     className="max-box"
                     type="number"
-                    value={maxAdd ?? ""}
-                    onChange={e => onMaxAddChange(e.target.value === "" ? "" : Number(e.target.value))}
+                    value={maxAdd1 ?? ""}
+                    onChange={e => onMaxAdd1Change(e.target.value === "" ? "" : Number(e.target.value))}
+                    />
+                    <label>+</label>                
+                    <input
+                        className="min-box"
+                        type="number"   
+                        value={minAdd2 ?? ""}
+                        onChange={e => onMinAdd2Change(e.target.value === "" ? "" : Number(e.target.value))}
+                        />
+                    <span className="range-seperator">to</span>
+                    <input
+                    className="max-box"
+                    type="number"
+                    value={maxAdd2 ?? ""}
+                    onChange={e => onMaxAdd2Change(e.target.value === "" ? "" : Number(e.target.value))}
                     />                
                 </div>
             </div>
@@ -34,18 +48,33 @@ function Settings({ minAdd, maxAdd, onMinAddChange, onMaxAddChange, minMult, max
                     <input
                         className="min-box"
                         type="number"   
-                        value={minMult ?? ""}
-                        onChange={e => onMinMultChange(e.target.value === "" ? "" : Number(e.target.value))}
+                        value={minMul1 ?? ""}
+                        onChange={e => onMinMul1Change(e.target.value === "" ? "" : Number(e.target.value))}
                         />
                     <span className="range-seperator">to</span>
                     <input
                     className="max-box"
                     type="number"
-                    value={maxMult ?? ""}
-                    onChange={e => onMaxMultChange(e.target.value === "" ? "" : Number(e.target.value))}
+                    value={maxMul1 ?? ""}
+                    onChange={e => onMaxMul1Change(e.target.value === "" ? "" : Number(e.target.value))}
+                    />                
+                <label>×</label>
+                    <input
+                        className="min-box"
+                        type="number"   
+                        value={minMul2 ?? ""}
+                        onChange={e => onMinMul2Change(e.target.value === "" ? "" : Number(e.target.value))}
+                        />
+                    <span className="range-seperator">to</span>
+                    <input
+                    className="max-box"
+                    type="number"
+                    value={maxMul2 ?? ""}
+                    onChange={e => onMaxMul2Change(e.target.value === "" ? "" : Number(e.target.value))}
                     />                
                 </div>
             </div>
+
             <div className="operator-settings">
                 <input 
                 className="operator-toggle" 

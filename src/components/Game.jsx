@@ -11,10 +11,14 @@ function Game() {
     const [round, setRound] = useState(0)
     const [count, setCount] = useState(0)
     const [skipped, setSkipped] = useState(0)
-    const [minAdd, setMinAdd] = useState(2)
-    const [maxAdd, setMaxAdd] = useState(10)
-    const [minMult, setMinMult] = useState(2)
-    const [maxMult, setMaxMult] = useState(10)
+    const [minAdd1, setMinAdd1] = useState(2)
+    const [maxAdd1, setMaxAdd1] = useState(100)
+    const [minMul1, setMinMul1] = useState(2)
+    const [maxMul1, setMaxMul1] = useState(12)
+    const [minAdd2, setMinAdd2] = useState(2)
+    const [maxAdd2, setMaxAdd2] = useState(100)
+    const [minMul2, setMinMul2] = useState(2)
+    const [maxMul2, setMaxMul2] = useState(100)
     const [operators, setOperators] = useState(["+", "-", "*", "/"])
     const [infMode, setInfMode] = useState(false)
     const [equationLog, setEquationLog] = useState([])
@@ -92,10 +96,14 @@ function Game() {
                     count={count}
                     skipped={skipped}
                     isRunning={isRunning}
-                    minAdd={minAdd}
-                    maxAdd={maxAdd}
-                    minMult={minMult}
-                    maxMult={maxMult}
+                    minAdd1={minAdd1}
+                    maxAdd1={maxAdd1}
+                    minMul1={minMul1}
+                    maxMul1={maxMul1} 
+                    minAdd2={minAdd2}
+                    maxAdd2={maxAdd2}
+                    minMul2={minMul2}
+                    maxMul2={maxMul2}
                     operators={operators}
                     onCorrect={() => setCount(c => c + 1)}
                     onSkip={() => setSkipped(s => s + 1)}
@@ -106,14 +114,14 @@ function Game() {
             ) : (
                 <StartScreen 
                 onStart={startGame}
-                minAdd={minAdd}
-                maxAdd={maxAdd}
-                onMinAddChange={setMinAdd}
-                onMaxAddChange={setMaxAdd}
-                minMult={minMult}
-                maxMult={maxMult}
-                onMinMultChange={setMinMult}
-                onMaxMultChange={setMaxMult}
+                minAdd1={minAdd1} maxAdd1={maxAdd1} 
+                onMinAdd1Change={setMinAdd1} onMaxAdd1Change={setMaxAdd1} 
+                minMul1={minMul1} maxMul1={maxMul1}
+                onMinMul1Change={setMinMul1} onMaxMul1Change={setMaxMul1}
+                minAdd2={minAdd2} maxAdd2={maxAdd2} 
+                onMinAdd2Change={setMinAdd2} onMaxAdd2Change={setMaxAdd2} 
+                minMul2={minMul2} maxMul2={maxMul2}
+                onMinMul2Change={setMinMul2} onMaxMul2Change={setMaxMul2}
                 operators={operators}
                 onOperatorsChange={setOperators}
                 selectedTime={selectedTime}
