@@ -1,7 +1,8 @@
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import PlayingScreen from "./game/PlayScreen"
 import StartScreen from "./game/StartScreen"
 import EndScreen from "./game/EndScreen"
+import { DIFFICULTIES } from "../functions/Difficulties"
 
 function Game() { 
     const DEFAULT_RANGES = {
@@ -22,7 +23,7 @@ function Game() {
     const [infMode, setInfMode] = useState(false)
     const [equationLog, setEquationLog] = useState([])
     const [ranges, setRanges] = useState(DEFAULT_RANGES)
-    const [difficulty, setDifficulty] = useState("medium")
+    const [difficulty, setDifficulty] = useState("easy")
 
     const isRunning = hasStarted && time > 0 
 
@@ -66,6 +67,12 @@ function Game() {
         }))
     }
 
+    function onDifficultyChange(level) {
+        setDifficulty(level)
+        if (level !== "custom") {
+            setRanges(DIFFICULTIES[level].ranges)
+        }
+    }
     function logSkipped(equation) {
         setEquationLog(prev => [...prev, {...equation, result: "skipped"}])
     }
@@ -110,7 +117,7 @@ function Game() {
                     onSkip={() => setSkipped(s => s + 1)}
                     onLogCorrect={logCorrect}
                     onLogSkipped={logSkipped}
-                    onRestart={startGame}
+                    onRestart={onRestart}
                     infMode={infMode}/>
             ) : (
                 <StartScreen 
@@ -121,6 +128,8 @@ function Game() {
                 onOperatorsChange={setOperators}
                 selectedTime={selectedTime}
                 setSelectedTime={setSelectedTime}
+                difficulty={difficulty}
+                onDifficultyChange={onDifficultyChange}
                 />
             )}
         </div>

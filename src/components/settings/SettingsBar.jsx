@@ -1,9 +1,14 @@
 import QuestionSettings from "./QuestionSettings"
+import DifficultyTab from "./Difficulty"
+import { useEffect, useState } from "react";
 
-function SettingsBar({ ranges, onRangeChange, selectedTime, setSelectedTime, operators, onOperatorsChange }) {
-
+function SettingsBar({ difficulty, onDifficultyChange, ranges, onRangeChange, selectedTime, setSelectedTime, operators, onOperatorsChange }) {
     return (
         <section className="settings-bar">
+            <DifficultyTab
+                difficulty={difficulty}
+                onDifficultyChange={onDifficultyChange}
+            />
             <QuestionSettings 
                 ranges={ranges}
                 onRangeChange={onRangeChange}
@@ -12,6 +17,7 @@ function SettingsBar({ ranges, onRangeChange, selectedTime, setSelectedTime, ope
                 operators={operators} 
                 onOperatorsChange={onOperatorsChange}
             />
+            
             <div className="time-settings">
                 <input 
                 className="time-toggle" 
@@ -67,5 +73,6 @@ function SettingsBar({ ranges, onRangeChange, selectedTime, setSelectedTime, ope
         </section>
     )
 }
+
 
 export default SettingsBar

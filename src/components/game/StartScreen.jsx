@@ -1,9 +1,10 @@
 import SettingsBar from "../settings/SettingsBar"
 
-function StartScreen({ onStart, ranges, onRangeChange, operators, onOperatorsChange, selectedTime, setSelectedTime }) { 
+function StartScreen({ onStart, ranges, onRangeChange, operators, onOperatorsChange, selectedTime, setSelectedTime, difficulty, onDifficultyChange }) { 
     return (
         <>
         <SettingsBar
+        difficulty={difficulty} onDifficultyChange={onDifficultyChange}
         ranges={ranges} onRangeChange={onRangeChange}
         selectedTime={selectedTime} setSelectedTime={setSelectedTime} 
         operators={operators} onOperatorsChange={onOperatorsChange}
