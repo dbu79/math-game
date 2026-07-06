@@ -1,6 +1,6 @@
 import Game from "../components/Game"
 
-function Main() { 
+function Home() { 
     return (
         <div className="page-content">
             <Game/>
@@ -8,4 +8,4 @@ function Main() {
     )
 }
 
-export default Main
+export default Home

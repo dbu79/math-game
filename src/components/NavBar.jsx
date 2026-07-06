@@ -1,13 +1,14 @@
-import { BrowserRouter } from "react-router-dom"
+import { Link } from "react-router-dom"
 
-function NavBar() { 
+function NavBar() {
     return (
         <nav className="navbar">
-            <a href="/">Home</a>
-            <a href="/practice">Practice</a>
-            <a href="/profile">Profile</a>
+            <Link to="/">Home</Link>
+            <Link to="/leaderboard">Leaderboard</Link>
+            <Link to="/profile">Profile</Link>
         </nav>
     )
 }
+
 
 export default NavBar

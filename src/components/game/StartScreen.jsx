@@ -1,9 +1,9 @@
-import Settings from "./Settings"
+import SettingsBar from "../settings/SettingsBar"
 
 function StartScreen({ onStart, minAdd1, maxAdd1, onMinAdd1Change, onMaxAdd1Change, minMul1, maxMul1, onMinMul1Change, onMaxMul1Change, minAdd2, maxAdd2, onMinAdd2Change, onMaxAdd2Change, minMul2, maxMul2, onMinMul2Change, onMaxMul2Change, operators, onOperatorsChange, selectedTime, setSelectedTime }) { 
     return (
         <>
-        <Settings 
+        <SettingsBar
         minAdd1={minAdd1} maxAdd1={maxAdd1} 
         onMinAdd1Change={onMinAdd1Change} onMaxAdd1Change={onMaxAdd1Change} 
         minMul1={minMul1} maxMul1={maxMul1}

@@ -156,11 +156,20 @@ a {
     text-align: center;
     appearance: textfield;
     -moz-appearance: textfield;
+    -webkit-appearance: textfield;  
     padding: 0.25rem;
     border-radius: 7px;
     border: 1px solid var(--border);
     font-family: var(--font-sans);
     background: #d1d0c5;
+}
+
+.min-box::-webkit-outer-spin-button,
+.min-box::-webkit-inner-spin-button,
+.max-box::-webkit-outer-spin-button,
+.max-box::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* ---- Toggles ---- */
@@ -289,6 +298,12 @@ a {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     outline: none;
+    font-family: var(--font-sans);
+}
+.input-box::-webkit-outer-spin-button,
+.input-box::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .input-box:focus {
@@ -344,7 +359,7 @@ button:active {
     display: flex;
     gap: 24px;
     font-family: monospace;
-    margin-left: 5rem;
+    margin-left: 20rem;
 }
 
 .stat {
@@ -362,7 +377,7 @@ button:active {
 
 .accuracy-chart {
     position: relative;
-    width: 100%;
+    width: 75%;
     height: 260px;
 }
 

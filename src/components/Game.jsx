@@ -1,9 +1,10 @@
 import { use, useEffect, useState } from "react"
-import PlayingScreen from "./PlayScreen"
-import StartScreen from "./StartScreen"
-import EndScreen from "./EndScreen"
+import PlayingScreen from "./game/PlayScreen"
+import StartScreen from "./game/StartScreen"
+import EndScreen from "./game/EndScreen"
 
 function Game() { 
+
     const [time, setTime] = useState(30)
     const [selectedTime, setSelectedTime] = useState(30)
     const [hasStarted, setHasStarted] = useState(false)

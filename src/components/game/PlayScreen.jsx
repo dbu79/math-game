@@ -1,6 +1,6 @@
 import Question from "./Question";
-import Timer from "./Timer";
-import Stats from "./Stats";
+import Timer from "../Timer";
+import Stats from "../Stats";
 
 function PlayingScreen({ time, round, count, skipped, onCorrect, onSkip, isRunning, onRestart, minAdd1, maxAdd1, minMul1, maxMul1, minAdd2, maxAdd2, minMul2, maxMul2, operators, infMode, onLogCorrect, onLogSkipped }) {
     return (
