@@ -1,4 +1,4 @@
-function QuestionSettings({ minAdd1, maxAdd1, onMinAdd1Change, onMaxAdd1Change, minMul1, maxMul1, onMinMul1Change, onMaxMul1Change, minAdd2, maxAdd2, onMinAdd2Change, onMaxAdd2Change, minMul2, maxMul2, onMinMul2Change, onMaxMul2Change, operators, onOperatorsChange }) {
+function QuestionSettings({ ranges, onRangeChange, operators, onOperatorsChange }) {
 
     
     function toggleOperators(op) {
@@ -18,29 +18,29 @@ function QuestionSettings({ minAdd1, maxAdd1, onMinAdd1Change, onMaxAdd1Change, 
                     <input
                         className="min-box"
                         type="number"   
-                        value={minAdd1 ?? ""}
-                        onChange={e => onMinAdd1Change(e.target.value === "" ? "" : Number(e.target.value))}
+                        value={ranges.add1.min ?? ""}
+                        onChange={e => onRangeChange("add1", "min", e.target.value === "" ? "" : Number(e.target.value))}
                         />
                     <span className="range-seperator">to</span>
                     <input
                     className="max-box"
                     type="number"
-                    value={maxAdd1 ?? ""}
-                    onChange={e => onMaxAdd1Change(e.target.value === "" ? "" : Number(e.target.value))}
+                    value={ranges.add1.max ?? ""}
+                    onChange={e => onRangeChange("add1", "max", e.target.value === "" ? "" : Number(e.target.value))}
                     />
                     <label>+</label>                
                     <input
                         className="min-box"
                         type="number"   
-                        value={minAdd2 ?? ""}
-                        onChange={e => onMinAdd2Change(e.target.value === "" ? "" : Number(e.target.value))}
+                        value={ranges.add2.min ?? ""}
+                        onChange={e => onRangeChange("add2", "min", e.target.value === "" ? "" : Number(e.target.value))}
                         />
                     <span className="range-seperator">to</span>
                     <input
                     className="max-box"
                     type="number"
-                    value={maxAdd2 ?? ""}
-                    onChange={e => onMaxAdd2Change(e.target.value === "" ? "" : Number(e.target.value))}
+                    value={ranges.add2.max ?? ""}
+                    onChange={e => onRangeChange("add2", "max", e.target.value === "" ? "" : Number(e.target.value))}
                     />                
                 </div>
             </div>
@@ -50,29 +50,29 @@ function QuestionSettings({ minAdd1, maxAdd1, onMinAdd1Change, onMaxAdd1Change, 
                     <input
                         className="min-box"
                         type="number"   
-                        value={minMul1 ?? ""}
-                        onChange={e => onMinMul1Change(e.target.value === "" ? "" : Number(e.target.value))}
+                        value={ranges.mul1.min ?? ""}
+                        onChange={e => onRangeChange("mul1", "min", e.target.value === "" ? "" : Number(e.target.value))}
                         />
                     <span className="range-seperator">to</span>
                     <input
                     className="max-box"
                     type="number"
-                    value={maxMul1 ?? ""}
-                    onChange={e => onMaxMul1Change(e.target.value === "" ? "" : Number(e.target.value))}
+                    value={ranges.mul1.max ?? ""}
+                    onChange={e => onRangeChange("mul1", "max", e.target.value === "" ? "" : Number(e.target.value))}
                     />                
                 <label>×</label>
                     <input
                         className="min-box"
                         type="number"   
-                        value={minMul2 ?? ""}
-                        onChange={e => onMinMul2Change(e.target.value === "" ? "" : Number(e.target.value))}
+                        value={ranges.mul2.min ?? ""}
+                        onChange={e => onRangeChange("mul2", "min", e.target.value === "" ? "" : Number(e.target.value))}
                         />
                     <span className="range-seperator">to</span>
                     <input
                     className="max-box"
                     type="number"
-                    value={maxMul2 ?? ""}
-                    onChange={e => onMaxMul2Change(e.target.value === "" ? "" : Number(e.target.value))}
+                    value={ranges.mul2.max ?? ""}
+                    onChange={e => onRangeChange("mul2", "max", e.target.value === "" ? "" : Number(e.target.value))}
                     />                
                 </div>
             </div>

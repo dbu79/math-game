@@ -1,28 +1,27 @@
-function GetEquation({ minAdd1, maxAdd1, minMul1, maxMul1, minAdd2, maxAdd2, minMul2, maxMul2, operators=[] }) {
+function GetEquation({ ranges, operators=[] }) {
     
     if (operators.length === 0) operators = ["+", "-", "*", "/"]    
     const operator = operators[Math.floor(Math.random() * operators.length)]
 
-    const randA1 = () => Math.floor(Math.random() * (maxAdd1 - minAdd1 + 1)) + minAdd1
-    const randA2 = () => Math.floor(Math.random() * (maxAdd2 - minAdd2 + 1)) + minAdd2
-    const randM1 = () => Math.floor(Math.random() * (maxMul1 - minMul1 + 1)) + minMul1
-    const randM2 = () => Math.floor(Math.random() * (maxMul2 - minMul2 + 1)) + minMul2
+    const { add1, add2, mul1, mul2 } = ranges
+
+    const rand = (range) => Math.floor(Math.random() * (range.max - range.min + 1)) + range.min
 
     let n1, n2;
 
     if (operator === "/") {
-        n2 = randM1()
-        const quotient = randM2()
+        n2 = rand(mul1)
+        const quotient = rand(mul2)
         n1 = n2 * quotient
     } else if (operator === "*") {
-        n1 = randM1()
-        n2 = randM2()
+        n1 = rand(mul1)
+        n2 = rand(mul2)
     } else if (operator === "+") {
-        n1 = randA1()
-        n2 = randA2()
+        n1 = rand(add1)
+        n2 = rand(add2)
     } else {
-        const a = randA1()
-        const b = randA2()
+        const a = rand(add1)
+        const b = rand(add2)
         n1 = a + b
         n2 = b  
     }

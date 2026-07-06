@@ -2,7 +2,7 @@ import Question from "./Question";
 import Timer from "../Timer";
 import Stats from "../Stats";
 
-function PlayingScreen({ time, round, count, skipped, onCorrect, onSkip, isRunning, onRestart, minAdd1, maxAdd1, minMul1, maxMul1, minAdd2, maxAdd2, minMul2, maxMul2, operators, infMode, onLogCorrect, onLogSkipped }) {
+function PlayingScreen({ time, round, count, skipped, onCorrect, onSkip, isRunning, onRestart, ranges, operators, infMode, onLogCorrect, onLogSkipped }) {
     return (
         <>
         <Timer time={time}/>
@@ -11,14 +11,7 @@ function PlayingScreen({ time, round, count, skipped, onCorrect, onSkip, isRunni
             isRunning={isRunning}
             onCorrect={onCorrect}
             onSkip={onSkip}
-            minAdd1={minAdd1}
-            maxAdd1={maxAdd1}
-            minMul1={minMul1}
-            maxMul1={maxMul1} 
-            minAdd2={minAdd2}
-            maxAdd2={maxAdd2}
-            minMul2={minMul2}
-            maxMul2={maxMul2}           
+            ranges={ranges}
             operators={operators}
             infMode={infMode}
             onLogCorrect={onLogCorrect}

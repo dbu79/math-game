@@ -4,7 +4,12 @@ import StartScreen from "./game/StartScreen"
 import EndScreen from "./game/EndScreen"
 
 function Game() { 
-
+    const DEFAULT_RANGES = {
+        add1: { min: 2, max: 100 },
+        add2: { min: 2, max: 100 },
+        mul1: { min: 2, max: 12 },
+        mul2: { min: 2, max: 100 }
+    }
     const [time, setTime] = useState(30)
     const [selectedTime, setSelectedTime] = useState(30)
     const [hasStarted, setHasStarted] = useState(false)
@@ -12,17 +17,12 @@ function Game() {
     const [round, setRound] = useState(0)
     const [count, setCount] = useState(0)
     const [skipped, setSkipped] = useState(0)
-    const [minAdd1, setMinAdd1] = useState(2)
-    const [maxAdd1, setMaxAdd1] = useState(100)
-    const [minMul1, setMinMul1] = useState(2)
-    const [maxMul1, setMaxMul1] = useState(12)
-    const [minAdd2, setMinAdd2] = useState(2)
-    const [maxAdd2, setMaxAdd2] = useState(100)
-    const [minMul2, setMinMul2] = useState(2)
-    const [maxMul2, setMaxMul2] = useState(100)
+
     const [operators, setOperators] = useState(["+", "-", "*", "/"])
     const [infMode, setInfMode] = useState(false)
     const [equationLog, setEquationLog] = useState([])
+    const [ranges, setRanges] = useState(DEFAULT_RANGES)
+    const [difficulty, setDifficulty] = useState("medium")
 
     const isRunning = hasStarted && time > 0 
 
@@ -57,6 +57,13 @@ function Game() {
         setSkipped(0)
         setEquationLog([])
         setHasEnded(false)
+    }
+
+    function updateRange(key, bound, value) {
+        setRanges(prev => ({
+            ...prev, 
+            [key]: { ...prev[key], [bound]: value }
+        }))
     }
 
     function logSkipped(equation) {
@@ -97,14 +104,7 @@ function Game() {
                     count={count}
                     skipped={skipped}
                     isRunning={isRunning}
-                    minAdd1={minAdd1}
-                    maxAdd1={maxAdd1}
-                    minMul1={minMul1}
-                    maxMul1={maxMul1} 
-                    minAdd2={minAdd2}
-                    maxAdd2={maxAdd2}
-                    minMul2={minMul2}
-                    maxMul2={maxMul2}
+                    ranges={ranges}
                     operators={operators}
                     onCorrect={() => setCount(c => c + 1)}
                     onSkip={() => setSkipped(s => s + 1)}
@@ -115,14 +115,8 @@ function Game() {
             ) : (
                 <StartScreen 
                 onStart={startGame}
-                minAdd1={minAdd1} maxAdd1={maxAdd1} 
-                onMinAdd1Change={setMinAdd1} onMaxAdd1Change={setMaxAdd1} 
-                minMul1={minMul1} maxMul1={maxMul1}
-                onMinMul1Change={setMinMul1} onMaxMul1Change={setMaxMul1}
-                minAdd2={minAdd2} maxAdd2={maxAdd2} 
-                onMinAdd2Change={setMinAdd2} onMaxAdd2Change={setMaxAdd2} 
-                minMul2={minMul2} maxMul2={maxMul2}
-                onMinMul2Change={setMinMul2} onMaxMul2Change={setMaxMul2}
+                ranges={ranges}
+                onRangeChange={updateRange}
                 operators={operators}
                 onOperatorsChange={setOperators}
                 selectedTime={selectedTime}
