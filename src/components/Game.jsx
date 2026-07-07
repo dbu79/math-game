@@ -87,7 +87,7 @@ function Game() {
         function handleKeyDown(e) {
             if (e.key === "Tab") {
                 e.preventDefault()
-                startGame()
+                onRestart()
             }
         }
             window.addEventListener("keydown", handleKeyDown)

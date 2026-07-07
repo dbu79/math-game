@@ -1,14 +1,15 @@
 import QuestionSettings from "./QuestionSettings"
 import DifficultyTab from "./Difficulty"
-import { useEffect, useState } from "react";
 
 function SettingsBar({ difficulty, onDifficultyChange, ranges, onRangeChange, selectedTime, setSelectedTime, operators, onOperatorsChange }) {
     return (
-        <section className="settings-bar">
+        <section className={`settings-bar ${difficulty === "custom" ? "expanded" : ""}`}>
+            
             <DifficultyTab
                 difficulty={difficulty}
                 onDifficultyChange={onDifficultyChange}
             />
+            { (difficulty === "custom") ? (
             <QuestionSettings 
                 ranges={ranges}
                 onRangeChange={onRangeChange}
@@ -16,7 +17,7 @@ function SettingsBar({ difficulty, onDifficultyChange, ranges, onRangeChange, se
                 setSelectedTime={setSelectedTime} 
                 operators={operators} 
                 onOperatorsChange={onOperatorsChange}
-            />
+            />) : null}
             
             <div className="time-settings">
                 <input 

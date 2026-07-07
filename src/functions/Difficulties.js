@@ -4,7 +4,7 @@ export const DIFFICULTIES = {
             add1: { min: 2, max: 100 },
             add2: { min: 2, max: 100 },
             mul1: { min: 2, max: 12 },
-            mul2: { min: 2, max: 100 },
+            mul2: { min: 2, max: 24 },
         }
     },
     medium: {
