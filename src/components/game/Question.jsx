@@ -1,7 +1,7 @@
 import GetEquation from "../../functions/GetEquation"
 import { useState, useEffect } from "react"
 
-function Question({ isRunning, onCorrect, onSkip, ranges, operators, infMode, onLogCorrect, onLogSkipped }) { 
+function Question({ isRunning, onCorrect, onSkip, ranges, operators, infMode, onLogCorrect, onLogSkipped, onMiniTimerChange }) { 
     const [equation, setEquation] = useState(() => GetEquation({ ranges, operators }))
     const [miniTimer, setMiniTimer] = useState(8)
     const [guess, setGuess] = useState("")
@@ -43,10 +43,14 @@ function Question({ isRunning, onCorrect, onSkip, ranges, operators, infMode, on
         }
     }, [miniTimer, isRunning, ranges, operators, infMode])
 
-    
+    useEffect(() => {
+        onMiniTimerChange?.(miniTimer)
+    }, [miniTimer])
+
     return (
-        <div className="question-area">
-            <p className="equation">{n1} {operator} {n2} = ?</p>
+        <>
+            <p className="equation">{n1} {operator} {n2}</p>
+            <p className="equal-to">= ?</p>
             <input
                 className="input-box"
                 type="number"
@@ -55,7 +59,7 @@ function Question({ isRunning, onCorrect, onSkip, ranges, operators, infMode, on
                 disabled={!isRunning}
                 autoFocus
             />
-        </div>
+        </>
     )
 }
 

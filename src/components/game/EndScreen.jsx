@@ -1,4 +1,3 @@
-import Stats from "../Stats"
 import AccuracyChart from "../AccuracyChart"
 
 function EndScreen({ count, skipped, onRestart, equationLog }) {
@@ -7,7 +6,6 @@ function EndScreen({ count, skipped, onRestart, equationLog }) {
 
     return (    
         <>
-        <div className="end-screen">
             <div className="stats-row">
                 <div className="stat">
                     <span className="stat-label">Correct</span>
@@ -22,7 +20,6 @@ function EndScreen({ count, skipped, onRestart, equationLog }) {
                     <span className="stat-value">{accuracy}%</span>
                 </div>
             </div>
-        </div>
         <AccuracyChart equationLog={equationLog}/>
         <button className="play-again-button" onClick={onRestart}>Play again?</button>
         </>

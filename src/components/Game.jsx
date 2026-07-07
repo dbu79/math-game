@@ -20,7 +20,7 @@ function Game() {
     const [skipped, setSkipped] = useState(0)
 
     const [operators, setOperators] = useState(["+", "-", "*", "/"])
-    const [infMode, setInfMode] = useState(false)
+    const infMode = selectedTime === Infinity    
     const [equationLog, setEquationLog] = useState([])
     const [ranges, setRanges] = useState(DEFAULT_RANGES)
     const [difficulty, setDifficulty] = useState("easy")
@@ -38,12 +38,6 @@ function Game() {
             setHasEnded(true)
         }
     }, [time])
-
-    useEffect(() => {
-        if (selectedTime === Infinity) {
-            setInfMode(true)
-        }
-    }, [selectedTime])
     
     function onRestart() {
         setHasStarted(false)
