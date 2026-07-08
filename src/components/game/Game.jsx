@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import PlayingScreen from "./game/PlayScreen"
-import StartScreen from "./game/StartScreen"
-import EndScreen from "./game/EndScreen"
-import { DIFFICULTIES } from "../functions/Difficulties"
+import PlayingScreen from "./PlayScreen"
+import StartScreen from "./StartScreen"
+import EndScreen from "./EndScreen"
+import { DIFFICULTIES } from "../../utils/Difficulties"
 
 function Game() { 
     const DEFAULT_RANGES = {

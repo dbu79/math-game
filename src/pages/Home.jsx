@@ -1,8 +1,8 @@
-import Game from "../components/Game"
+import Game from "../components/game/Game"
 
 function Home() { 
     return (
-        <div className="page-content">
+        <div className="home-page-content">
             <Game/>
         </div>
     )

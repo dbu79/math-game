@@ -1,5 +1,5 @@
 import Question from "./Question";
-import Timer from "../Timer";
+import Timer from "./Timer";
 import { useState } from "react";
 
 function PlayingScreen({ time, round, count, skipped, onCorrect, onSkip, isRunning, onRestart, ranges, operators, infMode, onLogCorrect, onLogSkipped }) {

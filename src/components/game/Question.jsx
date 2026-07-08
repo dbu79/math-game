@@ -1,4 +1,4 @@
-import GetEquation from "../../functions/GetEquation"
+import GetEquation from "../../utils/GetEquation"
 import { useState, useEffect } from "react"
 
 function Question({ isRunning, onCorrect, onSkip, ranges, operators, infMode, onLogCorrect, onLogSkipped, onMiniTimerChange }) { 

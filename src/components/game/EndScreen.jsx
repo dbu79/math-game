@@ -1,4 +1,4 @@
-import AccuracyChart from "../AccuracyChart"
+import AccuracyChart from "./AccuracyChart"
 
 function EndScreen({ count, skipped, onRestart, equationLog }) {
     const total = count + skipped
