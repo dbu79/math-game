@@ -19,7 +19,7 @@ function SignUp() {
             password,
             options: {
                 data: {
-                    first_name: username, 
+                    username: username, 
                 },
                 emailRedirectTo: `${window.location.origin}/auth/callback`
             }
@@ -66,7 +66,9 @@ function SignUp() {
             </button>
             {message && <p>{message}</p>}
         </form>
+
     )
 }
 
 export default SignUp
+

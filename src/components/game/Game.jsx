@@ -97,6 +97,8 @@ function Game() {
                 skipped={skipped} 
                 onRestart={onRestart}
                 equationLog={equationLog}
+                selectedTime={selectedTime}
+                difficulty={difficulty}
                 />
             ) : hasStarted ? (
                 <PlayingScreen
