@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../../utils/supabaseClient"
+import { LogIn } from "lucide-react"
 
 function SignIn() {
     const [email, setEmail] = useState('')
@@ -28,7 +29,7 @@ function SignIn() {
 
     return (
         <form onSubmit={handleSignIn} className="login-box">
-            <p>Sign In</p>
+            <p><LogIn/> Sign In</p>
             {error && (
                 <div style={{ color: 'red', marginBottom: '1rem' }}>
                     {error}

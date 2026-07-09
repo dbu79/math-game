@@ -19,6 +19,7 @@
     --space-4: 2.5rem;
     --space-5: 4rem;
  }
+
  [data-theme="light"] {
     --text-primary: #2c2e31;
     --text-secondary: #646669;
@@ -180,8 +181,6 @@ button:active {
     background: var(--surface);
     padding: 1rem;
     border-radius: var(--radius);
-
-
 }
 
 .difficulty-toggle {
@@ -284,8 +283,11 @@ button:active {
 .difficulty-toggle:checked + .difficulty-label {
     color: var(--accent);
 }
-.operator-toggle:hover {
-    background: var(--accent-hover); 
+
+.operator-toggle:hover + .operator-label,
+.time-toggle:hover + .time-label,
+.difficulty-toggle:hover + .difficulty-label {
+    color: white;
 }
 
 /* ---- Time Toggle ---- */
@@ -320,6 +322,10 @@ button:active {
     font-family: var(--font-sans);
 }
 
+.time-toggle:hover + .time-label {
+    color: white;
+}
+
 /* ---- Play Screen ---- */
 
 .main.card {
@@ -327,7 +333,7 @@ button:active {
     flex-direction: column;
     gap: var(--space-3);
     width: 40%;
-    margin: 3rem auto;
+    /* margin: 3rem auto; */
     padding: var(--space-4) var(--space-3);
 }
 
@@ -489,6 +495,13 @@ button:active {
     display: flex;
     flex-direction: column;
     width: 20%;
+}
+
+.login-box p, 
+.register-box p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .auth-input {

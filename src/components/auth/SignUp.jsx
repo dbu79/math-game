@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../../utils/supabaseClient"
+import { UserRoundPlus } from "lucide-react"
 
 function SignUp() {
     const [email, setEmail] = useState('')
@@ -35,7 +36,7 @@ function SignUp() {
 
     return (
         <form onSubmit={handleSignUp} className="register-box">
-            <p>Register</p>
+            <p><UserRoundPlus/> Register</p>
             <input
                 className="auth-input"
                 type="text"
