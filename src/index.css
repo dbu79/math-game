@@ -1,11 +1,11 @@
- :root, 
- [data-theme="dark"] {
-    --text-primary: #d1d0c5;
-    --text-secondary: #646669;
-    --font-sans: "JetBrains Mono";
-    --bg: #323437;
-    --surface: #2c2e31;
-    --border: #e3e3ea;
+:root, 
+[data-theme="dark"] {
+    --text-primary: #e9ecf0;        /* Main typed text / Crisp white-gray */
+    --text-secondary: #939eae;      /* Sub text / Desaturated slate blue-gray */
+    --font-sans: "JetBrains Mono";  /* Keeping your preferred mono font */
+    --bg: #333a42;                  /* Deep slate gray background */
+    --surface: #2b3138;             /* Darker inset surface container */
+    --border: #4a5460;              /* Muted blue-gray borders */
     --accent: #5ec4ff;
     --accent-hover: #5ec4ffcc;
 
@@ -325,6 +325,7 @@ button:active {
 .time-toggle:hover + .time-label {
     color: white;
 }
+
 
 /* ---- Play Screen ---- */
 

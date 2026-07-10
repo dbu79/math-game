@@ -1,0 +1,73 @@
+.profile-header {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    margin: 5%;
+    padding: 1rem;
+    align-items: center;
+}
+
+.profile-info-box,
+.tests-completed,
+.time-spent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-img {
+    margin: 1rem;
+}
+
+.profile-head-title {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.total-stat,
+.profile-name {
+    font-size: 2rem;
+}
+
+.joined {
+    color: var(--text-secondary);
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+
+.past-scores {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.record-section {
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    }
+
+.record-bar {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+.record-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.record-box .record-score {
+    color: var(--text-primary);
+    font-size: 2rem;
+}
+.record-box span {
+    color: var(--text-secondary);
+}
+

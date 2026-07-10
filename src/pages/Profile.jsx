@@ -1,6 +1,7 @@
 import { useAuth } from "../components/auth/AuthContext"
 import SignIn from "../components/auth/SignIn";
 import SignUp from "../components/auth/SignUp" 
+import ProfileStats from "../components/profile/ProfileStats"
 import { supabase } from "../utils/supabaseClient";
 
 function Profile() {
@@ -21,7 +22,7 @@ function Profile() {
 
     return (
         <section className="profile-page-content">
-            <h1>Hello {user.user_metadata.username}</h1>
+            <ProfileStats/>
             <button onClick={ async () => {
                 const { error } = await supabase.auth.signOut()
                 if (error) console.error(error)}}>

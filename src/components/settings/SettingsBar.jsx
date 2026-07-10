@@ -13,16 +13,6 @@ function SettingsBar({ difficulty, onDifficultyChange, ranges, onRangeChange, se
                     <input 
                     className="time-toggle" 
                     type="radio" 
-                    id="toggle-15" 
-                    name="time"
-                    value={15} 
-                    checked={selectedTime === 15}
-                    onChange={() => setSelectedTime(15)}
-                    />
-                    <label className="time-label" htmlFor="toggle-15">15</label>
-                    <input 
-                    className="time-toggle" 
-                    type="radio" 
                     id="toggle-30" 
                     name="time"
                     value={30} 
@@ -45,11 +35,21 @@ function SettingsBar({ difficulty, onDifficultyChange, ranges, onRangeChange, se
                     type="radio" 
                     id="toggle-120" 
                     name="time"
-                    value={120}
+                    value={120} 
                     checked={selectedTime === 120}
-                    onChange={() => setSelectedTime(120)} 
+                    onChange={() => setSelectedTime(120)}
                     />
                     <label className="time-label" htmlFor="toggle-120">120</label>
+                    <input 
+                    className="time-toggle" 
+                    type="radio" 
+                    id="toggle-200" 
+                    name="time"
+                    value={200}
+                    checked={selectedTime === 200}
+                    onChange={() => setSelectedTime(200)} 
+                    />
+                    <label className="time-label" htmlFor="toggle-200">200</label>
                     <input 
                     className="time-toggle" 
                     type="radio" 

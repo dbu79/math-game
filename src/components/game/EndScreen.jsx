@@ -1,16 +1,17 @@
 import AccuracyChart from "./AccuracyChart"
 import { supabase } from "../../utils/supabaseClient"
 import { useAuth } from "../auth/AuthContext"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 function EndScreen({ count, skipped, onRestart, equationLog, selectedTime, difficulty }) {
     const { user } = useAuth()
     const total = count + skipped
     const accuracy = total > 0 ? Math.round((count / total) * 100) : 0
-    const [saved, setSaved] = useState(false)
+    const hasSaved = useRef(false)
 
     useEffect(() => {
-        if (saved || !user || selectedTime === Infinity) return 
+        if (hasSaved.current || !user || selectedTime === Infinity) return
+        hasSaved.current = true 
 
         async function saveScore() {
             const { error } = await supabase.from('scores').insert({
@@ -20,13 +21,11 @@ function EndScreen({ count, skipped, onRestart, equationLog, selectedTime, diffi
                 duration: selectedTime,
                 difficulty: difficulty,
             })
-            if (!error) {
-                setSaved(true)
-            } else { 
+            if (error) {
                 console.error('Error saving score:', error)
+                hasSaved.current = false 
             }
         }
-
         saveScore()
     }, [user, count, accuracy, selectedTime, difficulty])
     
