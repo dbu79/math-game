@@ -1,12 +1,26 @@
 import { Link, useNavigate } from "react-router-dom"
-import { User } from "lucide-react"
+import { BsPersonFill } from "react-icons/bs";
+import { IoMdSettings } from "react-icons/io";
+import { FaCrown } from "react-icons/fa";
+import { useAuth } from "./auth/AuthContext"
+
 
 function NavBar() {
+    const { user } = useAuth()
+
     return (
         <nav className="navbar">
-            <Link to="/">Home</Link>
-            <Link to="/leaderboard">Leaderboard</Link>
-            <Link to="/profile">Profile <User/></Link>
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/leaderboard" className="nav-link">
+                <FaCrown size={22}/>
+            </Link>
+            <Link to="/settings" className="nav-link"> 
+                <IoMdSettings size={22}/>
+            </Link>
+            <Link to="/profile" className="nav-link"> 
+                <BsPersonFill size={22}/>
+                { user ? user.user_metadata.username : ""}
+            </Link>
         </nav>
     )
 }

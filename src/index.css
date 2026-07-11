@@ -1,11 +1,11 @@
 :root, 
 [data-theme="dark"] {
-    --text-primary: #e9ecf0;        /* Main typed text / Crisp white-gray */
-    --text-secondary: #939eae;      /* Sub text / Desaturated slate blue-gray */
-    --font-sans: "JetBrains Mono";  /* Keeping your preferred mono font */
-    --bg: #333a42;                  /* Deep slate gray background */
-    --surface: #2b3138;             /* Darker inset surface container */
-    --border: #4a5460;              /* Muted blue-gray borders */
+    --text-primary: #e9ecf0;        
+    --text-secondary: #939eae;      
+    --font-sans: "JetBrains Mono";  
+    --bg: #333a42;                  
+    --surface: #2b3138;             
+    --border: #4a5460;              
     --accent: #5ec4ff;
     --accent-hover: #5ec4ffcc;
 
@@ -94,6 +94,16 @@ button:active {
     flex: 1;
     display: flex;
     justify-content: center;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--text-secondary);
 }
 /* ---- Page layout ---- */
 
@@ -284,12 +294,17 @@ button:active {
     color: var(--accent);
 }
 
-.operator-toggle:hover + .operator-label,
+/* .operator-toggle:hover + .operator-label,
 .time-toggle:hover + .time-label,
 .difficulty-toggle:hover + .difficulty-label {
     color: white;
+} */
+ 
+.operator-toggle:active + .operator-label,
+.time-toggle:active + .time-label,
+.difficulty-toggle:active + .difficulty-label {
+    transform: scale(0.98); 
 }
-
 /* ---- Time Toggle ---- */
 
 .time-settings {
@@ -307,6 +322,7 @@ button:active {
     opacity: 0;
     width: 1px;
     height: 1px;
+    transition: color 0.15s;
 }
 
 .time-label {
@@ -321,11 +337,6 @@ button:active {
     transition: color 0.15s;
     font-family: var(--font-sans);
 }
-
-.time-toggle:hover + .time-label {
-    color: white;
-}
-
 
 /* ---- Play Screen ---- */
 
@@ -481,45 +492,3 @@ button:active {
     align-items: flex-start;
 }
 
-/* ---- Register/Login Page ---- */
-
-.auth-page-content {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-evenly;
-    margin-top: 10%;
-    width: 100%;
-}
-
-.register-box,
-.login-box {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-}
-
-.login-box p, 
-.register-box p {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.auth-input {
-    font-family: var(--font-sans);
-    background-color: var(--surface);
-    color: var(--text-primary);
-    padding: 1rem;
-    border-radius: var(--radius);
-    font-size: 1rem;
-    border: 0px;
-    outline: none;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-}
-
-.auth-input::-webkit-outer-spin-button,
-.auth-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
