@@ -100,28 +100,28 @@ function ProfileRecords({ scores }) {
             <div className="record-bar">
                 <div className="record-box">
                     <span>30 seconds</span>
-                    <span>{bestScores.hard?.[30]?.score ?? "--"}</span>
+                    <span className="record-score">{bestScores.hard?.[30]?.score ?? "--"}</span>
                     <span>{bestScores.hard?.[30]
                     ? `${bestScores.hard[30].accuracy}%`
                     : "--"}
                     </span>                </div>
                 <div className="record-box">
                     <span>60 seconds</span>
-                    <span>{bestScores.hard?.[60]?.score ?? "--"}</span>
+                    <span className="record-score">{bestScores.hard?.[60]?.score ?? "--"}</span>
                     <span>{bestScores.hard?.[60]
                     ? `${bestScores.hard[60].accuracy}%`
                     : "--"}
                     </span>                </div>
                 <div className="record-box">
                     <span>120 seconds</span>
-                    <span>{bestScores.hard?.[120]?.score ?? "--"}</span>
+                    <span className="record-score">{bestScores.hard?.[120]?.score ?? "--"}</span>
                     <span>{bestScores.hard?.[120]
                     ? `${bestScores.hard[120].accuracy}%`
                     : "--"}
                     </span>                </div>
                 <div className="record-box">
                     <span>200 seconds</span>
-                    <span>{bestScores.hard?.[200]?.score ?? "--"}</span>
+                    <span className="record-score">{bestScores.hard?.[200]?.score ?? "--"}</span>
                     <span>{bestScores.hard?.[200]
                     ? `${bestScores.hard[200].accuracy}%`
                     : "--"}

@@ -8,6 +8,7 @@ function EndScreen({ count, skipped, onRestart, equationLog, selectedTime, diffi
     const total = count + skipped
     const accuracy = total > 0 ? Math.round((count / total) * 100) : 0
     const hasSaved = useRef(false)
+    const today = new Date().toISOString().split('T')[0]
 
     useEffect(() => {
         if (hasSaved.current || !user || selectedTime === Infinity) return
@@ -20,6 +21,7 @@ function EndScreen({ count, skipped, onRestart, equationLog, selectedTime, diffi
                 accuracy: accuracy,
                 duration: selectedTime,
                 difficulty: difficulty,
+                created_at: today
             })
             if (error) {
                 console.error('Error saving score:', error)

@@ -36,8 +36,8 @@ function ProfileStats() {
     const timeSpent = scores.reduce((sum, game) => sum + game.duration, 0)
 
     function formatTime(totalSeconds) {
-        const hours = Math.floor(timeSpent / 3600)
-        const minutes = Math.floor((timeSpent % 3600) / 60)
+        const hours = Math.floor(totalSeconds / 3600)
+        const minutes = Math.floor((totalSeconds % 3600) / 60)
         const seconds = totalSeconds % 60
 
         return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
@@ -48,12 +48,12 @@ function ProfileStats() {
 
     const formatter = new Intl.DateTimeFormat('en-UK', {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
-    });
+    });    
 
     return (
-        <>
+        < >
         <div className="profile-header">
             <div className="profile-info-box">
                 <span className="profile-name">{user.user_metadata.username}</span>
@@ -70,13 +70,29 @@ function ProfileStats() {
             
         </div>
         <ProfileRecords scores={scores}/>
-        <div className="past-scores">
-            {scores.map(s => (
-                <div key={s.id}>
-                    <p>Score: {s.score} | Accuracy: {s.accuracy}% | {s.difficulty} | {s.duration}</p>
-                </div>
-            ))}
-        </div>
+        <h1 className="past-scores-title">Past Scores</h1>
+        <table className="past-scores">
+            <thead>
+                <tr>
+                    <th>Score</th>
+                    <th>Accuracy</th>
+                    <th>Difficulty</th>
+                    <th>Duration</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {scores.map(s => (
+                <tr key={s.id}>
+                    <td>{s.score}</td>
+                    <td>{s.accuracy}%</td>
+                    <td>{s.difficulty}</td>
+                    <td>{formatTime(s.duration)}</td>
+                    <td>{formatter.format(new Date(s.created_at))}</td>
+                </tr>
+                ))}
+            </tbody>
+        </table>
         </>
     )
 }
