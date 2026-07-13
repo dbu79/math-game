@@ -69,7 +69,8 @@
 
 .profile-info-box,
 .tests-completed,
-.time-spent {
+.time-spent,
+.playing-streak {
     flex: 1;
     display: flex;
     flex-direction: column;
