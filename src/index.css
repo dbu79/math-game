@@ -2,7 +2,7 @@
 [data-theme="dark"] {
     --text-primary: #e9ecf0;        
     --text-secondary: #939eae;      
-    --font-sans: "JetBrains Mono";  
+    --font-sans: "Hibur Mono";  
     --bg: #333a42;                  
     --surface: #2b3138;             
     --border: #4a5460;              
@@ -61,7 +61,7 @@ a {
 button {
     padding: 0.6rem 1.5rem;
     font-family: var(--font-sans);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: black;
     background: var(--accent);
@@ -330,7 +330,6 @@ button:active {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* height: 2rem; */
     font-size: 0.9rem;
     cursor: pointer;
     user-select: none;

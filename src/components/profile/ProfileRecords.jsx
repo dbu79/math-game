@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 
-function ProfileRecords({ scores }) {
+function ProfileRecords({ scores, time, onTimeChange }) {
 
     if (scores.length === 0) return (
         <div className="no-data">
@@ -32,98 +31,76 @@ function ProfileRecords({ scores }) {
 
     return (
         <section className="record-section">
-            <h1>Easy:</h1>
+            <div className="record-header-bar">
+                <h1>Records:</h1>
+                <div className="time-choice-box">
+                    <input
+                    className="time-choice"
+                    type="radio"
+                    id="toggle-30"
+                    name="time"
+                    value="easy"
+                    checked={time === 30}
+                    onChange={() => onTimeChange(30)}
+                    />
+                    <label className="time-choice-label" htmlFor="toggle-30">30</label>
+                    <input
+                    className="time-choice"
+                    type="radio"
+                    id="toggle-60"
+                    name="time"
+                    value="60"
+                    checked={time === 60}
+                    onChange={() => onTimeChange(60)}
+                    />
+                    <label className="time-choice-label" htmlFor="toggle-60">60</label>
+                    <input
+                    className="time-choice"
+                    type="radio"
+                    id="toggle-120"
+                    name="time"
+                    value="120"
+                    checked={time === 120}
+                    onChange={() => onTimeChange(120)}
+                    />
+                    <label className="time-choice-label" htmlFor="toggle-120">120</label>
+                    <input
+                    className="time-choice"
+                    type="radio"
+                    id="toggle-200"
+                    name="time"
+                    value="200"
+                    checked={time === 200}
+                    onChange={() => onTimeChange(200)}
+                    />
+                    <label className="time-choice-label" htmlFor="toggle-200">200</label>
+                </div>
+            </div>
             <div className="record-bar">
                 <div className="record-box">
-                    <span>30 seconds</span>
-                    <span className="record-score">{bestScores.easy?.[30]?.score ?? "--"}</span>
-                    <span>{bestScores.easy?.[30]
-                    ? `${bestScores.easy[30].accuracy}%`
-                    : "--"}
-                    </span>                </div>
-                <div className="record-box">
-                    <span>60 seconds</span>
-                    <span className="record-score">{bestScores.easy?.[60]?.score ?? "--"}</span>
-                    <span>{bestScores.easy?.[60]
-                    ? `${bestScores.easy[60].accuracy}%`
-                    : "--"}
-                    </span>                </div>
-                <div className="record-box">
-                    <span>120 seconds</span>
-                    <span className="record-score">{bestScores.easy?.[120]?.score ?? "--"}</span>
-                    <span>{bestScores.easy?.[120]
-                    ? `${bestScores.easy[120].accuracy}%`
-                    : "--"}
-                    </span>                </div>
-                <div className="record-box">
-                    <span>200 seconds</span>
-                    <span className="record-score">{bestScores.easy?.[200]?.score ?? "--"}</span>
-                    <span>{bestScores.easy?.[200]
-                    ? `${bestScores.easy[200].accuracy}%`
+                    <span className="record-header">Easy</span>
+                    <span>{time} seconds</span>
+                    <span className="record-score">{bestScores.easy?.[time]?.score ?? "--"}</span>
+                    <span>{bestScores.easy?.[time]
+                    ? `${bestScores.easy[time].accuracy}%`
                     : "--"}
                     </span>
                 </div>
-            </div>
-            <h1>Medium:</h1>
-            <div className="record-bar">
                 <div className="record-box">
-                    <span>30 seconds</span>
-                    <span className="record-score">{bestScores.medium?.[30]?.score ?? "--"}</span>
-                    <span>{bestScores.medium?.[30]
-                    ? `${bestScores.medium[30].accuracy}%`
-                    : "--"}
-                    </span>                </div>
-                <div className="record-box">
-                    <span>60 seconds</span>
-                    <span className="record-score">{bestScores.medium?.[60]?.score ?? "--"}</span>
-                    <span>{bestScores.medium?.[60]
-                    ? `${bestScores.medium[60].accuracy}%`
-                    : "--"}
-                    </span>                </div>
-                <div className="record-box">
-                    <span>120 seconds</span>
-                    <span className="record-score">{bestScores.medium?.[120]?.score ?? "--"}</span>
-                    <span>{bestScores.medium?.[120]
-                    ? `${bestScores.medium[120].accuracy}%`
-                    : "--"}
-                    </span>                </div>
-                <div className="record-box">
-                    <span>200 seconds</span>
-                    <span className="record-score">{bestScores.medium?.[200]?.score ?? "--"}</span>
-                    <span>{bestScores.medium?.[200]
-                    ? `${bestScores.medium[200].accuracy}%`
+                    <span className="record-header">Medium</span>
+                    <span>{time} seconds</span>
+                    <span className="record-score">{bestScores.medium?.[time]?.score ?? "--"}</span>
+                    <span>{bestScores.easy?.[time]
+                    ? `${bestScores.easy[time].accuracy}%`
                     : "--"}
                     </span>
                 </div>
-            </div>
-            <h1>Hard:</h1>
-            <div className="record-bar">
                 <div className="record-box">
-                    <span>30 seconds</span>
-                    <span className="record-score">{bestScores.hard?.[30]?.score ?? "--"}</span>
-                    <span>{bestScores.hard?.[30]
-                    ? `${bestScores.hard[30].accuracy}%`
-                    : "--"}
-                    </span>                </div>
-                <div className="record-box">
-                    <span>60 seconds</span>
-                    <span className="record-score">{bestScores.hard?.[60]?.score ?? "--"}</span>
-                    <span>{bestScores.hard?.[60]
-                    ? `${bestScores.hard[60].accuracy}%`
-                    : "--"}
-                    </span>                </div>
-                <div className="record-box">
-                    <span>120 seconds</span>
-                    <span className="record-score">{bestScores.hard?.[120]?.score ?? "--"}</span>
-                    <span>{bestScores.hard?.[120]
-                    ? `${bestScores.hard[120].accuracy}%`
-                    : "--"}
-                    </span>                </div>
-                <div className="record-box">
-                    <span>200 seconds</span>
-                    <span className="record-score">{bestScores.hard?.[200]?.score ?? "--"}</span>
-                    <span>{bestScores.hard?.[200]
-                    ? `${bestScores.hard[200].accuracy}%`
+                    <span className="record-header">Hard</span>
+                    <span>{time} seconds</span>
+                    <span className="record-score">{bestScores.hard?.[time]?.score ?? "--"}</span>
+                    <span>{bestScores.hard?.[time]
+                    ? `${bestScores.hard[time].accuracy}%`
                     : "--"}
                     </span>
                 </div>

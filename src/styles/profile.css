@@ -56,7 +56,6 @@
 
 /* ---- Profie ---- */
 
-
 .profile-header {
     display: flex;
     flex-direction: row;
@@ -102,12 +101,59 @@
     margin: 5%;
     }
 
+
+.record-header-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
 .record-bar {
     display: flex;
     flex-direction: row;
     background-color: var(--surface);
     border-radius: var(--radius);
     padding: 1rem;
+}
+
+.record-header {
+    font-size: large;
+    color: var(--text-primary) !important;
+} 
+
+.time-choice-box {
+    /* flex: 1; */
+    display: flex;
+    align-items: center;
+    background: var(--surface);
+    padding: 1rem;
+    border-radius: var(--radius);
+    gap: 2rem;
+
+}
+
+.time-choice {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    
+}
+
+.time-choice-label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s;
+    font-family: var(--font-sans);
+}
+
+.time-choice:checked + .time-choice-label {
+    color: var(--accent);
 }
 
 .record-box {
@@ -126,7 +172,7 @@
 
 .past-scores,
 .past-scores-title {
-    margin: 1rem auto 0;   /* centers the table horizontally if it's narrower than its container */
+    margin: 1rem auto 0;   
     width: 80%;
     table-layout: fixed;
     border-collapse: collapse;
@@ -151,3 +197,8 @@
     background: var(--bg);
 }
 
+/* ---- Graph ---- */
+.profile-chart-box {
+    width: 75%;
+    height: 260px;
+}

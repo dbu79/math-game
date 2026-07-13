@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient"
 import { useAuth } from "../auth/AuthContext"
 import ProfileRecords from "./ProfileRecords"
+import ProfileGraph from "./ProfileGraph";
 
 function ProfileStats() {
     const { user } = useAuth()
     const [scores, setScores] = useState([])
     const [loading, setLoading] = useState(true)
+    const [time, setTime] = useState(15)
 
     useEffect(() => {
         if (!user) return 
@@ -67,9 +69,12 @@ function getDayStreak(scores) {
         streak++
         cursor.setDate(cursor.getDate() - 1)
     }
-
     return streak
-}
+    }
+
+    function onTimeChange(level) {
+        setTime(level)
+    }
 
     return (
         < >
@@ -92,7 +97,7 @@ function getDayStreak(scores) {
             </div>
             
         </div>
-        <ProfileRecords scores={scores}/>
+        <ProfileRecords scores={scores} time={time} onTimeChange={onTimeChange}/>
         <h1 className="past-scores-title">Past Scores</h1>
         <table className="past-scores">
             <thead>
@@ -105,7 +110,7 @@ function getDayStreak(scores) {
                 </tr>
             </thead>
             <tbody>
-                {scores.map(s => (
+                {scores.slice().sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, 5).map(s => (
                 <tr key={s.id}>
                     <td>{s.score}</td>
                     <td>{s.accuracy}%</td>
@@ -116,6 +121,7 @@ function getDayStreak(scores) {
                 ))}
             </tbody>
         </table>
+        <ProfileGraph scores={scores}/>
         </>
     )
 }
