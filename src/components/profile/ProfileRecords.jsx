@@ -90,8 +90,8 @@ function ProfileRecords({ scores, time, onTimeChange }) {
                     <span className="record-header">Medium</span>
                     <span>{time} seconds</span>
                     <span className="record-score">{bestScores.medium?.[time]?.score ?? "--"}</span>
-                    <span>{bestScores.easy?.[time]
-                    ? `${bestScores.easy[time].accuracy}%`
+                    <span>{bestScores.medium?.[time]
+                    ? `${bestScores.medium[time].accuracy}%`
                     : "--"}
                     </span>
                 </div>
