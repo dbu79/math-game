@@ -77,51 +77,51 @@ function getDayStreak(scores) {
     }
 
     return (
-        < >
-        <div className="profile-header">
-            <div className="profile-info-box">
-                <span className="profile-name">{user.user_metadata.username}</span>
-                <span className="joined">Joined {formatter.format(dateJoined)} </span>
+        <>
+            <div className="profile-header">
+                <div className="profile-info-box">
+                    <span className="profile-name">{user.user_metadata.username}</span>
+                    <span className="joined">Joined {formatter.format(dateJoined)} </span>
+                </div>
+                <div className="tests-completed">
+                    <span className="profile-head-title">Tests completed</span>
+                    <span className="total-stat">{totalGames}</span>
+                </div>
+                <div className="time-spent">
+                    <span className="profile-head-title">Time playing</span>
+                    <span className="total-stat">{formatTime(timeSpent)}</span>
+                </div>
+                <div className="playing-streak"> 
+                    <span className="profile-head-title">Playing Streak</span>
+                    <span className="total-stat">{getDayStreak(scores)}</span>
+                </div>
+                
             </div>
-            <div className="tests-completed">
-                <span className="profile-head-title">Tests completed</span>
-                <span className="total-stat">{totalGames}</span>
-            </div>
-            <div className="time-spent">
-                <span className="profile-head-title">Time playing</span>
-                <span className="total-stat">{formatTime(timeSpent)}</span>
-            </div>
-            <div className="playing-streak"> 
-                <span className="profile-head-title">Playing Streak</span>
-                <span className="total-stat">{getDayStreak(scores)}</span>
-            </div>
-            
-        </div>
-        <ProfileRecords scores={scores} time={time} onTimeChange={onTimeChange}/>
-        <h1 className="past-scores-title">Past Scores</h1>
-        <table className="past-scores">
-            <thead>
-                <tr>
-                    <th>Score</th>
-                    <th>Accuracy</th>
-                    <th>Difficulty</th>
-                    <th>Duration</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                {scores.slice().sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, 5).map(s => (
-                <tr key={s.id}>
-                    <td>{s.score}</td>
-                    <td>{s.accuracy}%</td>
-                    <td>{s.difficulty}</td>
-                    <td>{formatTime(s.duration)}</td>
-                    <td>{formatter.format(new Date(s.created_at))}</td>
-                </tr>
-                ))}
-            </tbody>
-        </table>
-        <ProfileGraph scores={scores}/>
+            <ProfileRecords scores={scores} time={time} onTimeChange={onTimeChange}/>
+            <h1 className="past-scores-title">Past Scores</h1>
+            <table className="past-scores">
+                <thead>
+                    <tr>
+                        <th>Score</th>
+                        <th>Accuracy</th>
+                        <th>Difficulty</th>
+                        <th>Duration</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {scores.slice().sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, 5).map(s => (
+                    <tr key={s.id}>
+                        <td>{s.score}</td>
+                        <td>{s.accuracy}%</td>
+                        <td>{s.difficulty}</td>
+                        <td>{formatTime(s.duration)}</td>
+                        <td>{formatter.format(new Date(s.created_at))}</td>
+                    </tr>
+                    ))}
+                </tbody>
+            </table>
+            <ProfileGraph scores={scores}/>
         </>
     )
 }

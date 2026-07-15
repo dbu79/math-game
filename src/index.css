@@ -23,7 +23,7 @@
  [data-theme="light"] {
     --text-primary: #2c2e31;
     --text-secondary: #646669;
-    --font-sans: "JetBrains Mono";
+    --font-sans: "Hibur Mono";
     --bg: #f5f5f0;
     --surface: #ffffff;
     --border: #d1d0c5;
@@ -155,7 +155,7 @@ button:active {
     flex-direction: column;
     padding: 5rem 1rem 1rem;
     gap: var(--space-2);
-    width: 75%;
+    width: 50%;
 }
 
 .settings-main {
@@ -225,6 +225,7 @@ button:active {
     gap: 0.3rem;
     font-size: 0.9rem;
     height: 5rem;
+    align-items: center;
 }
 
 .range-inputs {
