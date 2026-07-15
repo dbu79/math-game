@@ -11,7 +11,7 @@ function ProfileStats() {
     const { user } = useAuth()
     const [scores, setScores] = useState([])
     const [loading, setLoading] = useState(true)
-    const [time, setTime] = useState(15)
+    const [time, setTime] = useState(30)
 
     useEffect(() => {
         if (!user) return 
