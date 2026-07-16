@@ -8,12 +8,18 @@ function NavBar() {
 
     return (
         <nav className="navbar">
-            <Link to="/" className="nav-link">Home</Link>
-            <ThemeToggle/>
-            <Link to="/profile" className="nav-link"> 
-                <BsPersonFill size={22}/>
-                { user ? user.user_metadata.username : ""}
-            </Link>
+            <div className="nav-item">
+                <Link to="/" className="nav-link">Home</Link>
+            </div>
+            <div className="nav-item">
+                <ThemeToggle/>
+            </div>
+            <div className="nav-item">
+                <Link to="/profile" className="nav-link">
+                    <BsPersonFill size={22}/>
+                    {user ? user.user_metadata.username : ""}
+                </Link>
+            </div>
         </nav>
     )
 }

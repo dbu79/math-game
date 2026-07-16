@@ -88,23 +88,34 @@ button:active {
     font-weight: 600;
     gap: var(--space-3);
     margin-top: 2rem;
+    /* border: 1px solid var(--border); */
+    width: 75%;
+    margin-inline: auto;
+    border-radius: var(--radius);
+    background: var(--surface, #fff);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 0.5rem;
 }
 
-.navbar a {
+.nav-item {
     flex: 1;
     display: flex;
     justify-content: center;
 }
 
 .nav-link {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    transition: 0.3s;
+    gap: 0.4rem;
+    padding: 0.6rem 1.25rem;
+    transition: all 0.25s ease;
+    color: var(--text-primary);
 }
 
 .nav-link:hover {
     color: var(--text-secondary);
 }
+
 /* ---- Page layout ---- */
 
 .home-page-content {
