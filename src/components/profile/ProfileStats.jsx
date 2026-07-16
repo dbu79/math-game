@@ -31,7 +31,7 @@ function ProfileStats() {
         fetchScores()
     }, [user])
 
-    if (loading) return <div className="past-scores">Loading stats...</div>
+    if (loading) return <div className="loading">Loading stats...</div>
     if (scores.length === 0) return <div className="past-scores">No games played yet.</div>
     
     const totalGames = scores.length
