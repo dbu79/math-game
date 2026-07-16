@@ -8,6 +8,7 @@
     --border: #4a5460;              
     --accent: #5ec4ff;
     --accent-hover: #5ec4ffcc;
+    --range: #b7bdc4;
 
     --correct: #2f9e63;
     --incorrect: #ca4754;
@@ -29,6 +30,7 @@
     --border: #d1d0c5;
     --accent: #5ec4ff;       
     --accent-hover: #5ec4ffcc;
+    --range: #e2e2d9;
 
     --correct: #2f9e63;
     --incorrect: #ca4754;
@@ -167,6 +169,7 @@ button:active {
     padding: 5rem 1rem 1rem;
     gap: var(--space-2);
     width: 65%;
+    margin-inline: auto;
 }
 
 .settings-main {
@@ -195,13 +198,20 @@ button:active {
     transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.1s ease;
 }
 
+.difficulty-settings,
+.settings-box,
+.operator-settings,
+.time-settings {
+    background: var(--surface);
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
+}
+
 .difficulty-settings {
     flex: 1;
     display: flex;
     align-items: center;
-    background: var(--surface);
-    padding: 1rem;
-    border-radius: var(--radius);
 }
 
 .difficulty-toggle {
@@ -211,7 +221,8 @@ button:active {
     height: 1px;
 }
 
-.difficulty-label {
+.difficulty-label,
+.time-label {
     flex: 1;
     display: flex;
     align-items: center;
@@ -219,24 +230,52 @@ button:active {
     font-size: 0.9rem;
     cursor: pointer;
     user-select: none;
+    color: var(--text-secondary);
     transition: color 0.15s;
     font-family: var(--font-sans);
+    transition: all 0.2s ease;
 }
 
+.difficulty-label:hover, 
+.time-label:hover {
+    color: var(--text-primary);
+}
+
+/* ---- Time Toggle ---- */
+
+.time-settings {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.time-toggle {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    transition: color 0.15s;
+}
+
+/* ---- Custom Settings ---- */
+
 .settings-box {
-    box-sizing: border-box;
     flex: 1;                 
-    background: var(--surface);
-    border-radius: var(--radius);
-    padding: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 0.3rem;
-    font-size: 0.9rem;
-    height: 5rem;
+    box-sizing: border-box;
     align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    gap: 0.4rem;
+    height: 5rem;
+}
+
+.box-title {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 .range-inputs {
@@ -246,10 +285,15 @@ button:active {
     accent-color: var(--accent);
 }
 
+.range-seperator {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
 .min-box,
 .max-box {
     width: 2.5rem;
-    height: 0.8rem;    
+    height: 1.6rem;    
     text-align: center;
     appearance: textfield;
     -moz-appearance: textfield;
@@ -258,7 +302,7 @@ button:active {
     border-radius: 7px;
     border: 1px solid var(--border);
     font-family: var(--font-sans);
-    background: #d1d0c5;
+    background: var(--range);
 }
 
 .min-box::-webkit-outer-spin-button,
@@ -275,9 +319,9 @@ button:active {
     flex: 1;
     display: flex;
     align-items: center;
-    background: var(--surface);
+    justify-content: center;
     padding: 0.5rem;
-    border-radius: var(--radius);
+    gap: 0.25rem;
 }
 
 .operator-toggle {
@@ -295,9 +339,10 @@ button:active {
     width: 2.5rem;
     height: 2.5rem;
     font-size: 1.2rem;
+    color: var(--text-secondary);
     cursor: pointer;
     user-select: none;
-    transition: color 0.15s;
+    transition: all 0.15s ease;
 }
 
 .operator-toggle:checked + .operator-label,
@@ -306,48 +351,6 @@ button:active {
     color: var(--accent);
 }
 
-/* .operator-toggle:hover + .operator-label,
-.time-toggle:hover + .time-label,
-.difficulty-toggle:hover + .difficulty-label {
-    color: white;
-} */
- 
-.operator-toggle:active + .operator-label,
-.time-toggle:active + .time-label,
-.difficulty-toggle:active + .difficulty-label {
-    transform: scale(0.98); 
-}
-/* ---- Time Toggle ---- */
-
-.time-settings {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    background: var(--surface);
-    padding: 1rem;
-    border-radius: var(--radius);
-
-}
-
-.time-toggle {
-    position: absolute;
-    opacity: 0;
-    width: 1px;
-    height: 1px;
-    transition: color 0.15s;
-}
-
-.time-label {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    cursor: pointer;
-    user-select: none;
-    transition: color 0.15s;
-    font-family: var(--font-sans);
-}
 
 /* ---- Play Screen ---- */
 

@@ -28,7 +28,7 @@ function QuestionSettings({ ranges, onRangeChange, operators, onOperatorsChange 
                     value={ranges.add1.max ?? ""}
                     onChange={e => onRangeChange("add1", "max", e.target.value === "" ? "" : Number(e.target.value))}
                     />
-                    <label>+</label>                
+                    <label className="range-seperator">+</label>                
                     <input
                         className="min-box"
                         type="number"   
@@ -60,7 +60,7 @@ function QuestionSettings({ ranges, onRangeChange, operators, onOperatorsChange 
                     value={ranges.mul1.max ?? ""}
                     onChange={e => onRangeChange("mul1", "max", e.target.value === "" ? "" : Number(e.target.value))}
                     />                
-                <label>×</label>
+                <label className="range-seperator">×</label>
                     <input
                         className="min-box"
                         type="number"   
