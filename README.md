@@ -1,16 +1,57 @@
-# React + Vite
+# Mental Math Trainer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fast-paced, Zetamac-style mental arithmetic game built with React and Supabase. Sharpen your speed and accuracy across addition, subtraction, multiplication, and division — track your scores, build streaks, and compete against your own personal bests.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Configurable operators** — practice addition, subtraction, multiplication, division, or any combination
+- **Difficulty presets and custom ranges** — choose a preset difficulty or set your own number ranges per operator
+- **Timed rounds** — customizable timer to fit quick practice sessions or longer drills
+- **Scoring** — real-time score tracking as you solve problems
+- **Streaks** — track consecutive correct answers to push your focus
+- **User profiles** — sign in and save your progress via Supabase Auth
+- **Score history** — review past sessions and track improvement over time
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React
+- **Backend / Auth / DB:** [Supabase](https://supabase.com) (PostgreSQL, Auth, Realtime)
+- **Deployment:** [Vercel](https://vercel.com)
 
-## Expanding the ESLint configuration
+## Live App
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Deployed on Vercel: [https://mental-math-trainer-phi.vercel.app/](https://mental-math-trainer-phi.vercel.app/) 
+
+## Supabase Setup
+ 
+This project uses Supabase for authentication and score persistence. Schema setup is scripted via the Supabase CLI — see [`supabase/README.md`](./supabase/README.md) for full instructions. In short:
+ 
+```bash
+npm install -g supabase
+supabase login
+supabase link --project-ref kcmshrypmdyzjtzfkxew
+supabase db push
+```
+
+## Schema overview
+ 
+**`scores`**
+ 
+| column      | type         | notes                          |
+|-------------|--------------|---------------------------------|
+| id          | uuid (pk)    | auto-generated                  |
+| user_id     | uuid (fk)    | references `auth.users`         |
+| score       | integer      |                                  |
+| accuracy    | numeric      |                                  |
+| duration    | integer      | round length in seconds         |
+| difficulty  | text         |                                  |
+| created_at  | timestamptz  | defaults to `now()`             |
+
+## Future Plans
+
+- [ ] Leaderboards (global / friends)
+- [ ] Mobile-friendly layout improvements
+
+## License
+
+MIT
