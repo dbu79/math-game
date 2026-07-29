@@ -27,7 +27,7 @@ Deployed on Vercel: [https://mental-math-trainer-phi.vercel.app/](https://mental
 
 ## Supabase Setup
  
-This project uses Supabase for authentication and score persistence. Schema setup is scripted via the Supabase CLI — see [`supabase/README.md`](./supabase/README.md) for full instructions. In short:
+This project uses Supabase for authentication and score persistence. Schema setup is scripted via the Supabase CLI:
  
 ```bash
 npm install -g supabase
