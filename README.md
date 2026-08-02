@@ -1,6 +1,7 @@
 # Mental Math Trainer
 
 A Zetamac-style mental arithmetic game built with React and Supabase.
+Deployed on Vercel: [https://mental-math-trainer-phi.vercel.app/](https://mental-math-trainer-phi.vercel.app/) 
 
 ## Features
 
@@ -15,15 +16,11 @@ A Zetamac-style mental arithmetic game built with React and Supabase.
 - **User profiles** — sign in and save your progress via Supabase Auth
 - **Score history** — review past sessions and track improvement over time
 
-## Tech Stack
+## Stack
 
 - **Frontend:** React
 - **Backend / Auth / DB:** [Supabase](https://supabase.com) (PostgreSQL, Auth, Realtime)
 - **Deployment:** [Vercel](https://vercel.com)
-
-## Live App
-
-Deployed on Vercel: [https://mental-math-trainer-phi.vercel.app/](https://mental-math-trainer-phi.vercel.app/) 
 
 ## Supabase Setup
  
